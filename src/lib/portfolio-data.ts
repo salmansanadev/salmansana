@@ -14,6 +14,20 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "07",
+    role: "Developer",
+    preview: "https://image.thum.io/get/width/1348/crop/926/noanimate/https://roshin.tech",
+    title: "Roshin (roshin.tech)",
+    category: "Digital",
+    description: "Developed a watch-focused online store with product browsing, streamlined ordering and a responsive shopping experience for customers across Pakistan.",
+    outcome: "Web developer — building and managing the storefront, product presentation and e-commerce experience.",
+    tags: ["E-commerce", "Web Development", "Online Store", "Responsive Design"],
+    link: "https://roshin.tech",
+    linkLabel: "Visit roshin.tech",
+    accent: "from-[#d4d4d8] to-[#52525b]",
+  },
+
+  {
     id: "06",
     role: "Developer",
     preview: "/projects/ilab.webp",
