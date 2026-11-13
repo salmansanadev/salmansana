@@ -8,6 +8,7 @@ import { projects } from "@/lib/portfolio-data";
 import { useSiteContent } from "@/lib/site-content";
 import portrait from "@/assets/salman-cutout.webp";
 import "./reference-portfolio.css";
+import "./portfolio-2026.css";
 
 const services = [
   ["WEB DESIGN & DEV", "Building clear, responsive websites for businesses, learning platforms and community initiatives.", "Websites that work.", "DESIGN / DEVELOP / LAUNCH"],
