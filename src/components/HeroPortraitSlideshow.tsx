@@ -12,40 +12,35 @@ const slides = [
   { src: "/portraits/salman-05.webp", alt: "Salman Sana, standing portrait" },
 ];
 
-/**
- * Only display actual color photographs. CSS cannot restore real colors to a
- * grayscale source image, so monochrome source files are excluded from the
- * slideshow until a genuine color replacement is available.
- */
-function isColorPhotograph(image: HTMLImageElement): boolean {
+/** Only used to apply a warm tint to monochrome source photos, never to hide them. */
+function sourceIsMonochrome(image: HTMLImageElement): boolean {
   try {
     const canvas = document.createElement("canvas");
-    canvas.width = 36;
-    canvas.height = 36;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (!ctx) return true;
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    canvas.width = 42;
+    canvas.height = 42;
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    if (!context) return false;
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    const { data } = context.getImageData(0, 0, canvas.width, canvas.height);
     let visible = 0;
-    let colorPixels = 0;
-    for (let index = 0; index < data.length; index += 4) {
-      if (data[index + 3] < 90) continue;
-      const r = data[index];
-      const g = data[index + 1];
-      const b = data[index + 2];
+    let colorful = 0;
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i + 3] < 100) continue;
       visible++;
-      if (Math.max(r, g, b) - Math.min(r, g, b) > 17) colorPixels++;
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      if (Math.max(r, g, b) - Math.min(r, g, b) > 15) colorful++;
     }
-    return visible === 0 || colorPixels / visible > 0.07;
+    return visible > 80 && colorful / visible < 0.06;
   } catch {
-    // Avoid breaking the image when a browser blocks canvas pixel reads.
-    return true;
+    // A blocked canvas read should never prevent a portrait from being shown.
+    return false;
   }
 }
 
 export default function HeroPortraitSlideshow() {
-  const [active, setActive] = useState<number | null>(null);
-  const [colorSlides, setColorSlides] = useState<number[]>([]);
+  const [active, setActive] = useState(0);
+  const [loaded, setLoaded] = useState<number[]>([]);
+  const [monochrome, setMonochrome] = useState<number[]>([]);
   const [paused, setPaused] = useState(false);
   const [motionOptIn, setMotionOptIn] = useState(false);
   const [inView, setInView] = useState(false);
@@ -74,39 +69,37 @@ export default function HeroPortraitSlideshow() {
   }, []);
 
   useEffect(() => {
-    if (!autoplay || !inView || !pageVisible || colorSlides.length < 2) return;
-    const timer = window.setInterval(() => {
-      setActive(current => {
-        const index = colorSlides.indexOf(current ?? colorSlides[0]);
-        return colorSlides[(Math.max(index, 0) + 1) % colorSlides.length];
-      });
-    }, 4000);
+    if (!autoplay || !inView || !pageVisible || loaded.length < 2) return;
+    const timer = window.setInterval(() => setActive(current => {
+      const next = loaded.find(index => index > current);
+      return next ?? loaded[0];
+    }), 4200);
     return () => window.clearInterval(timer);
-  }, [autoplay, inView, pageVisible, colorSlides]);
+  }, [autoplay, inView, pageVisible, loaded]);
 
-  const onPortraitLoaded = (image: HTMLImageElement, index: number) => {
-    if (!isColorPhotograph(image)) return;
-    setColorSlides(previous =>
-      previous.includes(index) ? previous : [...previous, index].sort((a, b) => a - b)
-    );
-    setActive(current => current ?? index);
+  const onLoaded = (image: HTMLImageElement, index: number) => {
+    setLoaded(previous => previous.includes(index) ? previous : [...previous, index].sort((a,b) => a-b));
+    if (sourceIsMonochrome(image)) {
+      setMonochrome(previous => previous.includes(index) ? previous : [...previous, index]);
+    }
   };
 
   return <div className="ref-portrait hero-portrait-slideshow" ref={root}
-    role="region" aria-roledescription="carousel" aria-label="Salman Sana color portrait slideshow">
+    role="region" aria-roledescription="carousel" aria-label="Salman Sana portrait slideshow">
     {slides.map((slide, index) =>
       <img key={slide.src} src={slide.src}
-        alt={active === index ? slide.alt : ""}
-        aria-hidden={active !== index}
-        className={`hero-portrait-slide ${active === index && colorSlides.includes(index) ? "is-active" : ""}`}
+        alt={index === active ? slide.alt : ""}
+        aria-hidden={index !== active}
+        className={`hero-portrait-slide ${index === active ? "is-active" : ""} ${monochrome.includes(index) ? "is-monochrome-source" : ""}`}
         loading="eager" decoding="async"
-        onLoad={event => onPortraitLoaded(event.currentTarget, index)}
+        onLoad={event => onLoaded(event.currentTarget, index)}
       />
     )}
-    {colorSlides.length > 1 && <div className="hero-portrait-controls" aria-label="Portrait controls">
-      {colorSlides.map(index =>
-        <button key={slides[index].src} type="button" className="hero-portrait-dot"
-          aria-label={`Show color portrait ${index + 1}`} aria-pressed={active === index}
+    <div className="hero-portrait-controls" aria-label="Portrait controls">
+      {slides.map((slide,index) =>
+        <button key={slide.src} type="button" className="hero-portrait-dot"
+          aria-label={`Show portrait ${index+1}`} aria-pressed={active === index}
+          disabled={!loaded.includes(index)}
           onClick={() => setActive(index)}><span/></button>
       )}
       <button className="hero-portrait-pause" type="button"
@@ -115,6 +108,6 @@ export default function HeroPortraitSlideshow() {
           if (autoplay) setPaused(true);
           else { setPaused(false); setMotionOptIn(true); }
         }}>{autoplay ? <Pause size={12}/> : <Play size={12}/>}</button>
-    </div>}
+    </div>
   </div>;
 }
