@@ -5,6 +5,8 @@ import "@/styles/site-motion.css";
 const revealSelector = [
   ".ref-certificate-card", ".ref-role-heading", ".ref-heading h2", ".ref-work-bar", ".ref-project", ".ref-services > h2",
   ".ref-service", ".ref-experience-row", ".ref-gallery figure",
+  ".ss-section-head", ".ss-project", ".ss-about-intro", ".ss-bento",
+  ".ss-expertise-card", ".ss-journey-row", ".ss-gallery-grid figure", ".ss-contact",
   ".ref-contact > h2", ".ref-contact > p", ".ref-contact > a", ".ref-contact footer > a",
   ".ref-secondary main h1", ".ref-secondary main h2", ".ref-secondary main article",
   ".ref-secondary main figure", ".ref-secondary main .outline-card",
@@ -28,6 +30,7 @@ export default function SiteMotion() {
     let portrait: HTMLElement | null = null;
     let clouds: HTMLElement | null = null;
     let hero: HTMLElement | null = null;
+    let studioHero: HTMLElement | null = null;
 
     const animate = (element: Element, index: number) => {
       if (reduced.matches || typeof element.animate !== "function") return;
@@ -50,12 +53,13 @@ export default function SiteMotion() {
         if (seen.has(element)) return;
         seen.add(element);
         // Descendant titles should not animate twice inside a moving card.
-        if (!element.matches("article,figure,.ref-project,.ref-service,.outline-card") && element.closest("article,figure,.ref-project,.ref-service,.outline-card")) return;
+        if (!element.matches("article,figure,.ref-project,.ref-service,.outline-card,.ss-project,.ss-bento,.ss-expertise-card,.ss-journey-row,.ss-contact,.ss-section-head") && element.closest("article,figure,.ref-project,.ref-service,.outline-card,.ss-project,.ss-bento,.ss-expertise-card,.ss-journey-row,.ss-contact")) return;
         observer.observe(element);
       });
       portrait = document.querySelector(".ref-portrait");
       clouds = document.querySelector(".ref-clouds");
       hero = document.querySelector(".ref-hero");
+      studioHero = document.querySelector(".ss-hero-editorial");
       scheduleScroll();
     };
     const updateScroll = () => {
@@ -70,6 +74,13 @@ export default function SiteMotion() {
         portrait?.style.setProperty("--portrait-scroll", `${shift}px`);
       }
       clouds?.style.setProperty("--cloud-scroll", `${Math.min(window.scrollY * 0.012, 65)}px`);
+      if (studioHero && finePointer.matches) {
+        const rect = studioHero.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          const offset = Math.max(-18, Math.min(18, -rect.top * .018));
+          studioHero.style.setProperty("--studio-parallax", `${offset}px`);
+        }
+      }
     };
     function scheduleScroll() {
       if (!frame) frame = window.requestAnimationFrame(updateScroll);
@@ -87,8 +98,8 @@ export default function SiteMotion() {
     const onPointer = (event: PointerEvent) => {
       if (reduced.matches || !finePointer.matches || event.pointerType === "touch") return;
       const target = event.target instanceof Element ? event.target : null;
-      const card = target?.closest<HTMLElement>(".ref-project") ?? null;
-      const button = target?.closest<HTMLElement>(".ref-pill.ref-dark") ?? null;
+      const card = target?.closest<HTMLElement>(".ref-project,.ss-project,.ss-expertise-card") ?? null;
+      const button = target?.closest<HTMLElement>(".ref-pill.ref-dark,.ss-button,.ss-header-cta,.ss-contact-button") ?? null;
       if (activeCard !== card || activeButton !== button) resetPointer();
       activeCard = card;
       activeButton = button;
@@ -113,6 +124,7 @@ export default function SiteMotion() {
       resetPointer();
       portrait?.style.removeProperty("--portrait-scroll");
       clouds?.style.removeProperty("--cloud-scroll");
+      studioHero?.style.removeProperty("--studio-parallax");
     };
     const mutations = new MutationObserver(scan);
     mutations.observe(document.getElementById("root")!, { childList: true, subtree: true });
