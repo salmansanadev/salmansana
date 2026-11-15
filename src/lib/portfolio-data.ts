@@ -18,7 +18,7 @@ export const projects: Project[] = [
     id: "08",
     role: "Founder",
     position: "Co-Founder",
-    preview: "https://image.thum.io/get/width/1348/crop/926/noanimate/https://jasasolutions.com.pk",
+    preview: "/projects/jasa-solutions.svg",
     title: "JASA Solutions",
     category: "Digital",
     description: "A technology and digital solutions agency helping businesses establish a professional online presence through websites, applications and digital services.",
