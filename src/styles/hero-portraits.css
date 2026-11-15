@@ -37,10 +37,11 @@
 /* Preserve original portrait colors; never force monochrome. */
 .ss-home .hero-portrait-slide{filter:none!important}
 
-/* Color photos stay natural; grayscale originals get a clearly tinted warm rendering.
-   Original color information cannot be recovered without replacement files. */
-.ss-home .ss-editorial-portrait .hero-portrait-slide.is-monochrome-source{
-  filter:sepia(.52) saturate(1.7) hue-rotate(-13deg) contrast(1.04)!important;
+/* Only authentic full-color portrait assets are used in the carousel. */
+.ss-home .hero-portrait-slide{
+  filter:none!important;
+  -webkit-filter:none!important;
+  mix-blend-mode:normal!important;
 }
 .ss-home .hero-portrait-dot:disabled{
   opacity:.35;
