@@ -1,6 +1,7 @@
 export type Project = {
   id: string;
   role: "Founder" | "Developer";
+  position?: string;
   preview: string;
   title: string;
   category: "Product" | "Platform" | "Community" | "Digital";
@@ -13,6 +14,20 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "08",
+    role: "Founder",
+    position: "Co-Founder",
+    preview: "https://image.thum.io/get/width/1348/crop/926/noanimate/https://jasasolutions.com.pk",
+    title: "JASA Solutions",
+    category: "Digital",
+    description: "A technology and digital solutions agency helping businesses establish a professional online presence through websites, applications and digital services.",
+    outcome: "Co-Founder — contributing to the agency's direction, digital projects and client solutions.",
+    tags: ["Co-Founder", "Digital Agency", "Web Development", "Business Solutions"],
+    link: "https://jasasolutions.com.pk",
+    linkLabel: "Visit JASA Solutions",
+    accent: "from-[#fb923c] to-[#1c1917]",
+  },
   {
     id: "07",
     role: "Developer",
