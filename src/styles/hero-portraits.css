@@ -1,6 +1,6 @@
 /* Reuses the exact existing portrait footprint: only the pictures transition. */
 .hero-portrait-slideshow{isolation:isolate}
-.hero-portrait-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:0;transform:translateX(16px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1);pointer-events:none;filter:grayscale(1)}
+.hero-portrait-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:0;transform:translateX(16px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1);pointer-events:none;filter:none}
 .hero-portrait-slide.is-active{opacity:1;transform:translateX(0)}
 .hero-portrait-controls{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:0;padding:2px 7px;border-radius:24px;background:#ffffffd9;border:1px solid #ddd;backdrop-filter:blur(8px);opacity:0;transition:opacity .2s}
 .hero-portrait-slideshow:hover .hero-portrait-controls,.hero-portrait-slideshow:focus-within .hero-portrait-controls{opacity:1}
@@ -33,3 +33,6 @@
 .ref-portfolio .hero-portrait-controls button:focus-visible{outline:2px solid #d5ff74;outline-offset:2px}
 @media(hover:none),(pointer:coarse){.ref-portfolio .hero-portrait-controls{bottom:12px;padding:3px 6px}.ref-portfolio .hero-portrait-dot,.ref-portfolio .hero-portrait-pause{width:36px;height:42px}}
 @media(prefers-reduced-motion:reduce){.ref-portfolio .hero-portrait-slide{transition:none!important}}
+
+/* Preserve original portrait colors; never force monochrome. */
+.ss-home .hero-portrait-slide{filter:none!important}
