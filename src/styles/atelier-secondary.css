@@ -1,88 +1,100 @@
 /* Studio portfolio — consistent secondary page palette.
    Applies only to public .ref-secondary pages, not /admin. */
 .ref-secondary{
- --background:140 19% 96%;
- --foreground:145 32% 15%;
- --card:0 0% 100%;
- --card-foreground:145 32% 15%;
- --popover:0 0% 100%;
- --popover-foreground:145 32% 15%;
- --primary:151 45% 26%;
- --primary-foreground:0 0% 100%;
- --secondary:143 25% 90%;
- --secondary-foreground:145 32% 15%;
- --muted:145 11% 43%;
- --muted-foreground:145 11% 43%;
- --accent:151 45% 29%;
- --accent-foreground:0 0% 100%;
- --border:145 20% 84%;
- --border2:145 19% 65%;
- --input:145 20% 84%;
- --ring:150 48% 29%;
- --ink:145 32% 15%;
- --navy:151 47% 17%;
- --surface:140 19% 96%;
- --blue:151 45% 26%;
- --blue-mid:151 45% 26%;
- --blue-light:146 22% 91%;
- --teal:158 43% 28%;
- --teal-light:150 26% 90%;
- --amber:46 58% 37%;
- --amber-light:48 60% 93%;
- --rose:350 50% 44%;
- --rose-light:350 50% 96%;
- --violet:151 42% 33%;
- --violet-light:146 24% 93%;
- --gold:78 71% 77%;
+ --background: 30 23% 97%;
+ --foreground: 0 0% 11%;
+ --card: 0 0% 100%;
+ --card-foreground: 0 0% 11%;
+ --popover: 0 0% 100%;
+ --popover-foreground: 0 0% 11%;
+ --primary: 21 80% 43%;
+ --primary-foreground: 0 0% 100%;
+ --secondary: 25 22% 92%;
+ --secondary-foreground: 0 0% 12%;
+ --muted: 25 6% 42%;
+ --muted-foreground: 25 6% 42%;
+ --accent: 22 84% 49%;
+ --accent-foreground: 0 0% 11%;
+ --border: 24 15% 85%;
+ --border2: 24 9% 66%;
+ --input: 24 15% 85%;
+ --ring: 22 84% 49%;
+ --ink: 0 0% 11%;
+ --navy: 0 0% 10%;
+ --surface: 30 23% 97%;
+ --blue: 22 84% 49%;
+ --blue-mid: 22 84% 49%;
+ --blue-light: 23 38% 93%;
+ --teal: 23 71% 44%;
+ --teal-light: 25 44% 94%;
+ --amber: 23 80% 47%;
+ --amber-light: 25 75% 94%;
+ --rose: 350 50% 44%;
+ --rose-light: 350 50% 96%;
+ --violet: 22 74% 47%;
+ --violet-light: 25 40% 94%;
+ --gold: 22 98% 62%;
  min-height:100vh;
- color:#1e3c2b;
- background:radial-gradient(ellipse at 80% 5%,rgba(165,203,167,.16),transparent 42%),#f5f6f3;
+ color:#191919;
+ background:radial-gradient(ellipse at 80% 5%,rgba(238,166,112,.14),transparent 42%),#F7F5F2;
 }
 .ref-secondary .page-hero{
- background:radial-gradient(ellipse at 78% 45%,rgba(170,205,152,.2),transparent 50%),linear-gradient(130deg,#153c2c,#23533b);
+ background:radial-gradient(ellipse at 78% 45%,rgba(238,131,72,.20),transparent 50%),linear-gradient(130deg,#191919,#292929);
  border-bottom:1px solid rgba(255,255,255,.12);
  color:#fff;
 }
-.ref-secondary .page-kicker,.ref-secondary .page-title .text-yellow-300{color:#d9f3aa}
+.ref-secondary .page-kicker,.ref-secondary .page-title .text-yellow-300{color:#FFAA6A}
 .ref-secondary .page-title{font-family:'Manrope',sans-serif;letter-spacing:-.07em}
-.ref-secondary .page-lead{color:#d7e7da}
-.ref-secondary .section-title{color:#213f2c;font-family:'Manrope',sans-serif}
-.ref-secondary .eyebrow{color:#2c6d48}
-.ref-secondary .body-copy{color:#647466}
+.ref-secondary .page-lead{color:#DDD5D0}
+.ref-secondary .section-title{color:#222222;font-family:'Manrope',sans-serif}
+.ref-secondary .eyebrow{color:#B34D16}
+.ref-secondary .body-copy{color:#6C6660}
 .ref-secondary .outline-card{
  background:rgba(255,255,255,.85);
  border:1px solid #fff;
- color:#213f2d;
+ color:#222222;
  box-shadow:0 15px 43px rgba(19,55,31,.07);
  backdrop-filter:blur(17px);
  -webkit-backdrop-filter:blur(17px);
 }
-.ref-secondary .outline-card:hover{border-color:#b0c6b3}
-.ref-secondary .border-y.bg-\[\#eef0f7\]{background:#edf2eb;border-color:#dce7df}
-.ref-secondary .primary-button{background:#235d42;color:#fff;box-shadow:0 10px 26px #1c543f18}
-.ref-secondary .primary-button:hover{background:#15462e;color:#fff}
-.ref-secondary .secondary-button{background:#fff;color:#23563e;border-color:#d6e5d8}
-.ref-secondary .text-primary{color:#306b4e}
-.ref-secondary .text-muted{color:#657569}
-.ref-secondary .text-border2{color:#849387}
-.ref-secondary .bg-gold{background:#d9f2a4}
-.ref-secondary .bg-blue-light{background:#e6f0e7}
-.ref-secondary .bg-ink{background:#1d5039}
+.ref-secondary .outline-card:hover{border-color:#D9BAB0}
+.ref-secondary .border-y.bg-\[\#eef0f7\]{background:#F4EDE6;border-color:#E9DDD3}
+.ref-secondary .primary-button{background:#191919;color:#fff;box-shadow:0 10px 26px #1c543f18}
+.ref-secondary .primary-button:hover{background:#D35D1B;color:#fff}
+.ref-secondary .secondary-button{background:#fff;color:#222222;border-color:#E6DAD2}
+.ref-secondary .text-primary{color:#AF4B19}
+.ref-secondary .text-muted{color:#69635D}
+.ref-secondary .text-border2{color:#8F8781}
+.ref-secondary .bg-gold{background:#FFAA6A}
+.ref-secondary .bg-blue-light{background:#F8E8DC}
+.ref-secondary .bg-ink{background:#292929}
 .ref-secondary .bg-card{background:#fff}
-.ref-secondary .border-border{border-color:#dbe7dc}
-.ref-secondary footer.bg-navy{background:#173e2d;border-color:#ffffff19}
-.ref-secondary .ref-portfolio{background:transparent;color:#203a2b;padding-top:0}
+.ref-secondary .border-border{border-color:#E5DCD5}
+.ref-secondary footer.bg-navy{background:#191919;border-color:#ffffff19}
+.ref-secondary .ref-portfolio{background:transparent;color:#222222;padding-top:0}
 .ref-secondary .ref-work-page .ref-page{margin:0 auto;max-width:1300px}
 .ref-secondary .ref-work-page .ref-work{background:transparent;box-shadow:none;border:0}
-.ref-secondary .ref-work-page .ref-real-project{background:#fff;border:1px solid #e0e9e0;border-radius:20px;overflow:hidden;box-shadow:0 15px 35px #25462f15}
-.ref-secondary .ref-work-page .ref-project-info h3{color:#233d2b}
-.ref-secondary .ref-work-page .ref-project-description{color:#65766a}
-.ref-secondary .ref-work-page .ref-project-role{color:#32734f}
-.ref-secondary .ref-work-page .ref-project-tags .ref-pill{background:#eef3ef;color:#46634e;border:1px solid #dbe7dc}
-.ref-secondary .ref-work-page .ref-filters button{color:#546b59}
-.ref-secondary .ref-work-page .ref-filters button.active{color:#21583d}
-.ref-secondary .ref-work-page .ref-role-heading h3{color:#286449}
-.ref-secondary .ref-work-page .ref-role-heading p{color:#698071}
-.ref-secondary .ref-work-page .ref-art-arrow{background:#d9f1a5;color:#1d4530}
-.ref-secondary a:focus-visible,.ref-secondary button:focus-visible{outline:3px solid #2a8153;outline-offset:3px}
+.ref-secondary .ref-work-page .ref-real-project{background:#fff;border:1px solid #E6DED7;border-radius:20px;overflow:hidden;box-shadow:0 15px 35px #25462f15}
+.ref-secondary .ref-work-page .ref-project-info h3{color:#222222}
+.ref-secondary .ref-work-page .ref-project-description{color:#69635D}
+.ref-secondary .ref-work-page .ref-project-role{color:#B34D16}
+.ref-secondary .ref-work-page .ref-project-tags .ref-pill{background:#F9F0E9;color:#675B53;border:1px solid #E5DCD5}
+.ref-secondary .ref-work-page .ref-filters button{color:#69615B}
+.ref-secondary .ref-work-page .ref-filters button.active{color:#A74714}
+.ref-secondary .ref-work-page .ref-role-heading h3{color:#B34D16}
+.ref-secondary .ref-work-page .ref-role-heading p{color:#78716B}
+.ref-secondary .ref-work-page .ref-art-arrow{background:#FFAA6A;color:#292929}
+.ref-secondary a:focus-visible,.ref-secondary button:focus-visible{outline:3px solid #C75819;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.ref-secondary *{scroll-behavior:auto}}
+
+/* Black, white and orange: shared public routes only */
+.ref-secondary{background:radial-gradient(circle at 86% 5%,rgba(239,137,72,.12),transparent 38%),#F7F5F2;color:#191919}
+.ref-secondary .page-hero{background:radial-gradient(circle at 80% 20%,rgba(228,111,44,.25),transparent 43%),linear-gradient(120deg,#191919,#2B2928)}
+.ref-secondary .page-kicker,.ref-secondary .page-title .text-yellow-300{color:#FFAA6A}
+.ref-secondary .primary-button{background:#191919;color:#fff}
+.ref-secondary .primary-button:hover{background:#C85718;color:#fff}
+.ref-secondary .eyebrow,.ref-secondary .text-primary{color:#B34D16}
+.ref-secondary .section-title{color:#1A1A1A}
+.ref-secondary footer.bg-navy{background:#191919}
+.ref-secondary .ref-work-page .ref-project-role,.ref-secondary .ref-work-page .ref-role-heading h3{color:#B34D16}
+.ref-secondary :is(a,button):focus-visible{outline:3px solid #E86C24;outline-offset:3px}
