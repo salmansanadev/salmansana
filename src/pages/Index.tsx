@@ -63,26 +63,22 @@ export default function Index() {
       </header>
 
       <main>
-        <section className="ss-hero" aria-labelledby="ss-hero-title">
-          <div className="ss-hero-copy">
-            <div className="ss-status"><span className="ss-status-dot"/> Available for meaningful collaborations</div>
-            <p className="ss-eyebrow">DEVELOPER · FOUNDER · CREATIVE THINKER</p>
-            <h1 id="ss-hero-title">Hello, I'm <span>Salman.</span><small>I build things that <em>matter.</em></small></h1>
-            <p className="ss-hero-description">A developer and entrepreneur turning thoughtful ideas into digital experiences. Building from Balochistan, for wherever good ideas can go.</p>
-            <div className="ss-actions">
-              <a className="ss-button ss-button-primary" href="#work">Explore my work <ArrowUpRight size={18}/></a>
-              <a className="ss-button ss-button-secondary" href={`mailto:${contact.email}`}>Let's collaborate <ArrowRight size={18}/></a>
-            </div>
-            <div className="ss-hero-foot"><span><MapPin size={15}/> Turbat, Pakistan</span><span className="ss-foot-divider"/><span>Creating since day one</span></div>
+
+        <section className="ss-hero ss-hero-editorial" aria-labelledby="ss-hero-title">
+          <div className="ss-editorial-kicker"><span><i/> INDEPENDENT CREATOR</span><span>BASED IN BALOCHISTAN · PAKISTAN</span></div>
+          <h1 className="ss-editorial-name" id="ss-hero-title"><span>SALMAN</span> SANA</h1>
+          <div className="ss-editorial-orbit" aria-hidden="true"/>
+          <div className="ss-editorial-portrait"><HeroPortraitSlideshow/></div>
+          <div className="ss-editorial-note ss-editorial-note-top"><div className="ss-editorial-note-icon"><Sparkles size={18}/></div><div><strong>Always curious.</strong><small>Always building.</small></div></div>
+          <div className="ss-editorial-note ss-editorial-note-bottom"><span className="ss-editorial-count">{String(projects.length).padStart(2,"0")}<em>+</em></span><div><strong>Featured projects</strong><small>Concept to creation</small></div></div>
+          <div className="ss-editorial-copy">
+            <p className="ss-eyebrow">DEVELOPER / FOUNDER / ENTREPRENEUR</p>
+            <h2>Digital ideas.<br/><em>Real impact.</em></h2>
+            <p>I'm a developer and entrepreneur turning purposeful ideas into digital products, from Balochistan to the world.</p>
+            <div className="ss-actions"><a className="ss-button ss-button-primary" href="#work">Explore my work <ArrowUpRight size={18}/></a><a className="ss-editorial-contact" href={`mailto:${contact.email}`}>Let's collaborate <ArrowUpRight size={16}/></a></div>
           </div>
-          <div className="ss-hero-art">
-            <div className="ss-art-ripple ss-art-ripple-one" aria-hidden="true"/><div className="ss-art-ripple ss-art-ripple-two" aria-hidden="true"/>
-            <div className="ss-portrait-stage"><HeroPortraitSlideshow/></div>
-            <div className="ss-float-note ss-float-note-top"><span className="ss-note-symbol"><Sparkles size={18}/></span><span><strong>Always curious.</strong><small>Always building.</small></span></div>
-            <div className="ss-float-note ss-float-note-bottom"><span className="ss-float-number">{String(projects.length).padStart(2,"0")}<span>+</span></span><span><strong>Featured projects</strong><small>Concept to creation</small></span></div>
-            <span className="ss-art-side" aria-hidden="true">DESIGN ↗ DEVELOP ↗ DELIVER</span>
-          </div>
-          <a href="#work" className="ss-scroll" aria-label="Scroll to selected work"><ArrowDownRight size={19}/><span>SCROLL TO EXPLORE</span></a>
+          <div className="ss-editorial-links"><a href={contact.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={16}/> LinkedIn</a><a href="https://github.com/salmansanadev" target="_blank" rel="noopener noreferrer"><Github size={16}/> GitHub</a><a href={`mailto:${contact.email}`}><Mail size={16}/> Email</a></div>
+          <a className="ss-editorial-scroll" href="#work">SCROLL TO EXPLORE <ArrowDownRight size={18}/></a>
         </section>
 
         <div className="ss-trust-strip" aria-label="Areas of work"><span><i/> Product development</span><span><i/> Business & strategy</span><span><i/> AI & innovation</span><span><i/> Community impact</span></div>
