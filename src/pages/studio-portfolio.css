@@ -421,3 +421,47 @@
   -webkit-filter:none!important;
   mix-blend-mode:normal!important;
 }
+
+/* Classroom business idea presentation — responsive editorial video feature. */
+.ss-home .ss-presentation{padding-top:95px;padding-bottom:78px}
+.ss-home .ss-presentation-feature{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(30px,5vw,78px);padding:clamp(26px,5vw,70px);overflow:hidden;border-radius:30px;border:1px solid rgba(255,255,255,.95);background:radial-gradient(circle at 82% 30%,rgba(244,145,81,.12),transparent 36%),linear-gradient(140deg,#fff,#f7f0e9);box-shadow:0 24px 72px rgba(54,33,18,.07)}
+.ss-home .ss-presentation-details{min-width:0}
+.ss-home .ss-presentation-chip{display:inline-flex;align-items:center;gap:10px;background:#fff3e8;border:1px solid #f3dece;padding:11px 14px;border-radius:99px;color:#ae4b1c;font-size:10px;font-weight:800;letter-spacing:.13em}
+.ss-home .ss-presentation-chip-dot{display:inline-block;width:7px;height:7px;flex:none;border-radius:50%;background:#eb782d;box-shadow:0 0 0 4px rgba(235,120,45,.12)}
+.ss-home .ss-presentation-details h3{margin:29px 0 17px;font-family:'Manrope',sans-serif;max-width:580px;font-size:clamp(34px,4.4vw,64px);line-height:1.1;letter-spacing:-.07em;font-weight:800;color:#202020}
+.ss-home .ss-presentation-details h3 em{font:normal 400 1em Georgia,serif;color:#c75c22;letter-spacing:-.07em}
+.ss-home .ss-presentation-details>p{font-size:14px;line-height:1.85;max-width:480px;color:#716660;margin:0 0 29px}
+.ss-home .ss-presentation-facts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.ss-home .ss-presentation-facts span{border:1px solid #eaded5;background:rgba(255,255,255,.75);padding:13px 15px;border-radius:13px;font-size:12px;color:#655d57}
+.ss-home .ss-presentation-facts strong{display:block;margin-bottom:5px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#b45827}
+.ss-home .ss-presentation-link{display:inline-flex;align-items:center;justify-content:center;gap:13px;padding:15px 21px;border-radius:14px;background:#1e1e1e;color:#fff!important;font-weight:800;font-size:12px;transition:background .25s,transform .25s;box-shadow:0 12px 27px rgba(0,0,0,.12)}
+.ss-home .ss-presentation-link:hover{background:#b9511c;transform:translateY(-3px)}
+.ss-home .ss-presentation-media{min-width:0;display:flex;flex-direction:column;align-items:center}
+.ss-home .ss-presentation-frame{position:relative;width:min(100%,330px);aspect-ratio:9/16;border-radius:24px;padding:7px;background:linear-gradient(155deg,#32302f,#1a1a1a);box-shadow:0 29px 58px rgba(30,22,19,.23);transform:rotate(2deg);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.ss-home .ss-presentation-frame:hover,.ss-home .ss-presentation-frame:focus-within{transform:rotate(0deg) translateY(-4px);box-shadow:0 35px 68px rgba(30,22,19,.27)}
+.ss-home .ss-presentation-frame video{display:block;width:100%;height:100%;aspect-ratio:9/16;object-fit:cover;background:#191919;border-radius:18px;filter:none!important;max-width:100%}
+.ss-home .ss-presentation-caption{display:flex;align-items:center;gap:9px;margin-top:21px;color:#8a7568;letter-spacing:.13em;text-transform:uppercase;font-size:9px;font-weight:800;text-align:center}
+.ss-home .ss-presentation-caption-mark{display:block;width:8px;height:8px;background:#e6712b;border-radius:50%}
+.ss-home .ss-presentation-caption>span:not(.ss-presentation-caption-mark){color:#c29c81}
+@media(max-width:900px){
+  .ss-home .ss-presentation-feature{grid-template-columns:1fr;gap:35px}
+  .ss-home .ss-presentation-details{text-align:center}
+  .ss-home .ss-presentation-details h3,.ss-home .ss-presentation-details>p{margin-left:auto;margin-right:auto}
+  .ss-home .ss-presentation-facts{justify-content:center}
+  .ss-home .ss-presentation-frame{width:min(100%,305px);transform:none}
+}
+@media(max-width:600px){
+  .ss-home .ss-presentation{padding:68px 7px 55px}
+  .ss-home .ss-presentation-feature{padding:28px 18px 34px;border-radius:22px}
+  .ss-home .ss-presentation-details h3{font-size:clamp(32px,8vw,45px);margin-top:22px}
+  .ss-home .ss-presentation-details>p{font-size:13px}
+  .ss-home .ss-presentation-facts{gap:8px}
+  .ss-home .ss-presentation-facts span{padding:10px 12px;font-size:11px}
+  .ss-home .ss-presentation-frame{width:min(100%,285px);border-radius:20px}
+  .ss-home .ss-presentation-frame video{border-radius:15px}
+  .ss-home .ss-presentation-caption{font-size:8px;letter-spacing:.07em}
+}
+@media(prefers-reduced-motion:reduce){
+  .ss-home .ss-presentation-frame{transform:none!important;transition:none!important}
+  .ss-home .ss-presentation-link{transition:none!important}
+}
