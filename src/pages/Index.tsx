@@ -17,6 +17,7 @@ const expertise = [
 
 const journey = [
   { role: "Founder & CEO", name: "Learnoa", period: "Present", note: "Digital learning & entrepreneurship" },
+  { role: "Co-Founder", name: "JASA Solutions", period: "Present", note: "Web, app development & digital solutions" },
   { role: "Assistant Director", name: "BELI — Centre for AI & Digital Skills", period: "2026–27", note: "Digital literacy & youth programs" },
   { role: "Web Developer & Website Manager", name: "Inspiration Lab", period: "Present", note: "Website development & management" },
   { role: "BBA Student", name: "University of Turbat", period: "4th semester", note: "Finance, marketing & entrepreneurship" },
@@ -30,7 +31,7 @@ function ProjectTile({ project, index }: { project: (typeof projects)[number], i
       <span className="ss-project-open" aria-hidden="true"><ArrowUpRight size={20}/></span>
     </a>
     <div className="ss-project-body">
-      <div className="ss-project-meta"><span>{project.role} / {project.category}</span><span>0{index+1}</span></div>
+      <div className="ss-project-meta"><span>{project.position ?? project.role} / {project.category}</span><span>0{index+1}</span></div>
       <h3>{project.title.replace(/ \([^)]*\)$/, "")}</h3>
       <p>{project.description}</p>
       <div className="ss-project-bottom"><div className="ss-tags">{project.tags.slice(0,2).map(tag=><span key={tag}>{tag}</span>)}</div><a href={project.link || "#contact"} target={project.link ? "_blank" : undefined} rel={project.link ? "noopener noreferrer" : undefined} aria-label={`Visit ${project.title}`}><ArrowUpRight size={19}/></a></div>
