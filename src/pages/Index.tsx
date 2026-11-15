@@ -109,6 +109,48 @@ export default function Index() {
           <div className="ss-journey">{journey.map((item,index)=><div className="ss-journey-row" key={item.name}><span className="ss-journey-index">0{index+1}</span><div><h3>{item.name}</h3><p>{item.role} <span>·</span> {item.note}</p></div><span className="ss-journey-period">{item.period}</span><ArrowUpRight className="ss-journey-arrow" size={19}/></div>)}</div>
         </section>
 
+        <section className="ss-presentation ss-section" id="presentation" aria-labelledby="ss-presentation-title">
+          <div className="ss-section-head">
+            <div>
+              <p className="ss-overline">05 / PRESENTING IDEAS IN PRACTICE</p>
+              <h2 id="ss-presentation-title">Business idea <em>presentation.</em></h2>
+            </div>
+            <p>A classroom pitch: sharing a business concept, presenting to an audience, and building confidence through practice.</p>
+          </div>
+          <div className="ss-presentation-feature">
+            <div className="ss-presentation-details">
+              <span className="ss-presentation-chip"><span aria-hidden="true" className="ss-presentation-chip-dot" /> CLASSROOM PRESENTATION</span>
+              <h3>From idea to <em>the classroom.</em></h3>
+              <p>A short moment from my business idea presentation. An opportunity to communicate an idea, explain its value and practise entrepreneurial thinking in front of an audience.</p>
+              <div className="ss-presentation-facts">
+                <span><strong>Format</strong> Business idea pitch</span>
+                <span><strong>Setting</strong> Classroom presentation</span>
+                <span><strong>Watch time</strong> 21 seconds</span>
+              </div>
+              <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_3M5D7iuR4Q2ZFypzjwJPP6gX0OZ/04fa7d7f-12da-4635-8728-da71df60634e.mp4" target="_blank" rel="noopener noreferrer" className="ss-presentation-link" aria-label="Open the classroom business idea presentation video in a new tab">
+                Open full video <ArrowUpRight size={18}/>
+              </a>
+            </div>
+            <div className="ss-presentation-media">
+              <div className="ss-presentation-frame">
+                <video
+                  controls
+                  playsInline
+                  preload="none"
+                  poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3M5D7iuR4Q2ZFypzjwJPP6gX0OZ/3634c971-48e5-4154-ae32-4cb09f1b3334.jpg"
+                  aria-label="Classroom business idea presentation video"
+                  width="576"
+                  height="1024"
+                >
+                  <source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3M5D7iuR4Q2ZFypzjwJPP6gX0OZ/04fa7d7f-12da-4635-8728-da71df60634e.mp4" type="video/mp4" />
+                  Your browser does not support embedded video playback.
+                </video>
+              </div>
+              <p className="ss-presentation-caption"><span className="ss-presentation-caption-mark" aria-hidden="true" /> CLASSROOM MOMENT <span>·</span> BUSINESS IDEA PITCH</p>
+            </div>
+          </div>
+        </section>
+
         <section className="ss-credentials" aria-label="Certificates and achievements"><Certificates/></section>
         {gallery.length > 0 && <section className="ss-section ss-gallery"><div className="ss-section-head"><div><p className="ss-overline">05 / BEHIND THE SCENES</p><h2>Moments & <em>stories.</em></h2></div></div><div className="ss-gallery-grid">{gallery.map((g,index)=><figure key={index}><img src={g.url} alt={g.alt || g.caption} loading="lazy"/><figcaption>{g.caption}</figcaption></figure>)}</div></section>}
         <section id="contact" className="ss-contact" aria-labelledby="ss-contact-title"><div className="ss-contact-glow" aria-hidden="true"/><div className="ss-contact-top"><span className="ss-overline">HAVE SOMETHING IN MIND?</span><span><span className="ss-status-dot"/> Open to collaborations</span></div><h2 id="ss-contact-title">Let's make something <em>remarkable.</em></h2><p>Whether you have an idea, a collaboration, or simply want to connect — I'd love to hear about it.</p><a className="ss-contact-button" href={`mailto:${contact.email}`}>Start a conversation <ArrowUpRight size={20}/></a><div className="ss-contact-bottom"><span>Good ideas start with a hello.</span><a href={contact.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={18}/> LinkedIn</a><a href="https://github.com/salmansanadev" target="_blank" rel="noopener noreferrer"><Github size={18}/> GitHub</a><a href={`mailto:${contact.email}`}><Mail size={18}/> Email</a></div></section>
