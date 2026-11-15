@@ -1,59 +1,123 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Linkedin, Mail, Menu, X, Github } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, BriefcaseBusiness, Code2, Github, GraduationCap, Lightbulb, Linkedin, Mail, MapPin, Menu, MoveUpRight, Sparkles, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeroPortraitSlideshow from "@/components/HeroPortraitSlideshow";
 import Certificates from "@/components/Certificates";
-import ProjectCards from "@/components/ProjectCards";
 import { projects } from "@/lib/portfolio-data";
 import { useSiteContent } from "@/lib/site-content";
-import portrait from "@/assets/salman-cutout.webp";
 import "./reference-portfolio.css";
-import "./portfolio-2026.css";
-import "./atelier-glass.css";
+import "./studio-portfolio.css";
 
-const services = [
-  ["WEB DESIGN & DEV", "Building clear, responsive websites for businesses, learning platforms and community initiatives.", "Websites that work.", "DESIGN / DEVELOP / LAUNCH"],
-  ["AI & DIGITAL SKILLS", "Supporting practical AI learning, digital literacy and skills development for students and young people.", "Human ideas. Digital possibilities.", "LEARN / EXPLORE / CREATE"],
-  ["BUSINESS & MARKETING", "Bringing business thinking, market research and brand communication to ideas with purpose.", "Turn an idea into impact.", "STRATEGY / BRAND / GROW"],
-  ["COMMUNITY & PROGRAMS", "Coordinating learning experiences, youth initiatives and collaborations across Balochistan.", "Better, together.", "CONNECT / COLLABORATE / BUILD"],
+const expertise = [
+  { num: "01", icon: Code2, title: "Digital experiences", text: "Websites and products that look considered, work smoothly, and help people get things done.", detail: "Web development · UI/UX" },
+  { num: "02", icon: Lightbulb, title: "Ideas to products", text: "Taking early ideas through research, thoughtful experimentation, and real-world launches.", detail: "Entrepreneurship · Strategy" },
+  { num: "03", icon: Sparkles, title: "AI & digital skills", text: "Making new technology approachable through practical tools, education, and experimentation.", detail: "AI literacy · Learning" },
+  { num: "04", icon: BriefcaseBusiness, title: "Business thinking", text: "Connecting marketing, financial thinking, and customer problems to build useful solutions.", detail: "Business · Marketing" },
 ];
-function Availability() { return <span className="ref-availability"><i />Available for New Project</span>; }
+
+const journey = [
+  { role: "Founder & CEO", name: "Learnoa", period: "Present", note: "Digital learning & entrepreneurship" },
+  { role: "Assistant Director", name: "BELI — Centre for AI & Digital Skills", period: "2026–27", note: "Digital literacy & youth programs" },
+  { role: "Web Developer & Website Manager", name: "Inspiration Lab", period: "Present", note: "Website development & management" },
+  { role: "BBA Student", name: "University of Turbat", period: "4th semester", note: "Finance, marketing & entrepreneurship" },
+];
+
+function ProjectTile({ project, index }: { project: (typeof projects)[number], index: number }) {
+  return <article className={`ss-project ss-project--${index % 4}`}>
+    <a href={project.link || "#contact"} target={project.link ? "_blank" : undefined} rel={project.link ? "noopener noreferrer" : undefined} className="ss-project-visual" aria-label={`Explore ${project.title}`}>
+      <div className="ss-browser"><span/><span/><span/><small>{project.link ? new URL(project.link).hostname : "Selected project"}</small></div>
+      <img src={project.preview} alt={`${project.title} website preview`} loading="lazy" decoding="async" />
+      <span className="ss-project-open" aria-hidden="true"><ArrowUpRight size={20}/></span>
+    </a>
+    <div className="ss-project-body">
+      <div className="ss-project-meta"><span>{project.role} / {project.category}</span><span>0{index+1}</span></div>
+      <h3>{project.title.replace(/ \([^)]*\)$/, "")}</h3>
+      <p>{project.description}</p>
+      <div className="ss-project-bottom"><div className="ss-tags">{project.tags.slice(0,2).map(tag=><span key={tag}>{tag}</span>)}</div><a href={project.link || "#contact"} target={project.link ? "_blank" : undefined} rel={project.link ? "noopener noreferrer" : undefined} aria-label={`Visit ${project.title}`}><ArrowUpRight size={19}/></a></div>
+    </div>
+  </article>;
+}
+
 export default function Index() {
   const { contact, gallery } = useSiteContent();
-  const [service, setService] = useState<number | null>(0);
-  const [menu, setMenu] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
-    if (!menu) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenu(false);
-    };
-    document.addEventListener("keydown", closeOnEscape);
-    return () => document.removeEventListener("keydown", closeOnEscape);
-  }, [menu]);
-  const socials = <><a href={contact.linkedin} target="_blank" rel="noreferrer" className="ref-pill"><Linkedin size={16}/>LinkedIn</a><a href="https://github.com/salmansanaofficial0-hash" target="_blank" rel="noreferrer" className="ref-pill"><Github size={16}/>GitHub</a><a href={`mailto:${contact.email}`} className="ref-pill"><Mail size={16}/>Email</a><Link to="/about" className="ref-pill">About Me <ArrowUpRight size={16}/></Link></>;
-  return <div className="ref-portfolio">
-    <a className="ref-skip-link" href="#work">Skip to selected work</a>
-    <div className="ref-clouds" aria-hidden="true" />
-    <main className="ref-page">
-      <section className="ref-hero" id="home">
-        <nav className="ref-nav" aria-label="Main navigation"><a href="#home" aria-label="Back to top"><Availability/></a><div id="portfolio-nav-links" className={`ref-nav-links ${menu ? "is-open" : ""}`}><a href="#work" onClick={()=>setMenu(false)}>Work <small>[{projects.length}]</small></a><a href="#services" onClick={()=>setMenu(false)}>Service <small>[4]</small></a><a href="#experience" onClick={()=>setMenu(false)}>Experience</a><a href="#certificates" onClick={()=>setMenu(false)}>Certificates</a><a href="#contact" onClick={()=>setMenu(false)}>Contact</a></div><a className="ref-pill ref-dark ref-nav-cta" href={`mailto:${contact.email}`}>Let’s Talk <ArrowUpRight size={17}/></a><button className="ref-menu" onClick={()=>setMenu(!menu)} aria-label={menu ? "Close navigation" : "Open navigation"} aria-controls="portfolio-nav-links" aria-expanded={menu}>{menu?<X/>:<Menu/>}</button></nav>
-        <div className="ref-hero-kicker" aria-label="Personal portfolio"><span>INDEPENDENT BUILDER</span><span>BASED IN BALOCHISTAN, PAKISTAN</span></div>
-        <h1 className="ref-name"><span>SALMAN</span> SANA</h1>
-        <div className="ref-hero-copy"><span className="ref-hero-overline">DESIGNING IDEAS INTO REALITY / 2026</span><h2>Developer <span className="ref-hero-amp">&amp;</span> Entrepreneur<span className="ref-hero-period">.</span></h2><p>I build digital products, launch ideas and connect people with opportunities — from Balochistan to the world.</p><div className="ref-hero-actions"><a className="ref-pill ref-dark" href="#work">Explore my work <ArrowUpRight size={18}/></a><a className="ref-hero-textlink" href="#contact">Let’s collaborate <ArrowUpRight size={16}/></a></div></div>
-        <HeroPortraitSlideshow/>
-        <div className="ref-hero-edge-label" aria-hidden="true">IDEAS → IMPACT <span>•</span> EST. 2026</div>
-        <a className="ref-scroll-cue" href="#work">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
-        <div className="ref-socials">{socials}</div>
-      </section>
-      <section className="ref-work ref-reveal" id="work">
-        <header className="ref-heading"><span aria-hidden="true">PORTFOLIO</span><p className="ref-section-kicker">01 / WORK THAT SPEAKS</p><h2>Selected <em>work.</em></h2><p className="ref-section-lead">Real products, meaningful ideas, and digital experiences I've helped bring to life.</p></header>
-        <ProjectCards />
-      </section>
-      <Certificates />
-      <section className="ref-services ref-reveal" id="services"><p className="ref-section-kicker">02 / WHAT I DO</p><h2>Ideas meet <em>execution.</em></h2><div className="ref-service-list">{services.map(([title,description,headline,label],i)=><article key={title} className={`ref-service ${service===i?"expanded":""}`}><button aria-expanded={service===i} aria-controls={`service-${i}`} onClick={()=>setService(service===i?null:i)}><span>{title}</span>{service===i?<X strokeWidth={1}/>:<ArrowUpRight strokeWidth={1}/>}</button><div className="ref-service-detail" id={`service-${i}`} aria-hidden={service!==i}><div className="ref-service-inner"><p>{description}</p></div></div><div className="ref-service-art" aria-hidden="true"><small>{label}</small><strong>{headline}</strong><span>↗</span></div></article>)}</div></section>
-      <section className="ref-experience ref-reveal" id="experience"><header className="ref-heading"><span aria-hidden="true">EXPERIENCE</span><p className="ref-section-kicker">03 / MY JOURNEY</p><h2>Experience <em>&amp; growth.</em></h2><p>Building with purpose</p></header><div className="ref-experience-row"><div><h3>Balochistan Emerging Leaders Initiative</h3><p>Assistant Director — Centre for AI & Digital Skills</p></div><span>Sep 2026 – Sep 2027</span></div><div className="ref-experience-row"><div><h3>Learnoa</h3><p>Founder & CEO</p></div><span>Current</span></div><div className="ref-experience-row"><div><h3>Inspiration Lab</h3><p>Web Developer & Website Manager</p></div><span>Current</span></div><div className="ref-experience-row"><div><h3>Karbaar</h3><p>Entrepreneurship & Product Development</p></div><span>Startup project</span></div><div className="ref-experience-row"><div><h3>University of Turbat</h3><p>Bachelor of Business Administration</p></div><span>4th Semester</span></div></section>
-      {gallery.length>0&&<section className="ref-gallery ref-reveal"><header className="ref-heading"><span aria-hidden="true">JOURNEY</span><h2>/MOMENTS & STORIES</h2></header><div>{gallery.map((g,i)=><figure key={i}><img src={g.url} alt={g.alt||g.caption} loading="lazy"/><figcaption>{g.caption}</figcaption></figure>)}</div><Link to="/blog" className="ref-pill">Read my articles <ArrowUpRight size={16}/></Link></section>}
-      <section className="ref-contact ref-reveal" id="contact"><Availability/><h2>HAVE A PROJECT IN MIND?</h2><p>Together, we can create something clear and impactful. Let’s collaborate to bring our<br className="ref-desktop"/> ideas to life in a way that resonates with everyone.</p><a className="ref-pill ref-dark" href={`mailto:${contact.email}`}>Contact Me <ArrowUpRight size={17}/></a><footer><a className="ref-pill ref-dark" href="#home"><img src={portrait} alt=""/>Salman Sana</a>{socials}</footer><div className="ref-footer-note"><span>© {new Date().getFullYear()} Salman Sana</span><span>{contact.location}</span><Link to="/credentials#certificates">Certificates ↗</Link><Link to="/blog">Journal ↗</Link></div></section>
-    </main>
+    if (!menuOpen) return;
+    const handleEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setMenuOpen(false); };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
+  return <div className="ss-home" id="top">
+    <a className="ss-skip" href="#work">Skip to selected work</a>
+    <div className="ss-ambient" aria-hidden="true"><i/><i/></div>
+    <div className="ss-shell">
+      <header className="ss-header">
+        <a className="ss-logo" href="#top" aria-label="Salman Sana home"><span className="ss-logo-mark">s<span>.</span></span><span>salman<span className="ss-logo-muted">sana</span></span></a>
+        <nav className={`ss-nav ${menuOpen ? "ss-nav--open" : ""}`} aria-label="Main navigation" id="ss-navigation">
+          <a href="#work" onClick={closeMenu}>Work</a><a href="#about" onClick={closeMenu}>About</a><a href="#expertise" onClick={closeMenu}>Expertise</a><a href="#experience" onClick={closeMenu}>Experience</a><Link to="/blog" onClick={closeMenu}>Journal</Link>
+        </nav>
+        <a className="ss-header-cta" href={`mailto:${contact.email}`}>Let's talk <ArrowUpRight size={16}/></a>
+        <button className="ss-mobile-menu" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-controls="ss-navigation" aria-expanded={menuOpen} onClick={()=>setMenuOpen(value=>!value)}>{menuOpen?<X size={21}/>:<Menu size={21}/>}</button>
+      </header>
+
+      <main>
+        <section className="ss-hero" aria-labelledby="ss-hero-title">
+          <div className="ss-hero-copy">
+            <div className="ss-status"><span className="ss-status-dot"/> Available for meaningful collaborations</div>
+            <p className="ss-eyebrow">DEVELOPER · FOUNDER · CREATIVE THINKER</p>
+            <h1 id="ss-hero-title">Hello, I'm <span>Salman.</span><small>I build things that <em>matter.</em></small></h1>
+            <p className="ss-hero-description">A developer and entrepreneur turning thoughtful ideas into digital experiences. Building from Balochistan, for wherever good ideas can go.</p>
+            <div className="ss-actions">
+              <a className="ss-button ss-button-primary" href="#work">Explore my work <ArrowUpRight size={18}/></a>
+              <a className="ss-button ss-button-secondary" href={`mailto:${contact.email}`}>Let's collaborate <ArrowRight size={18}/></a>
+            </div>
+            <div className="ss-hero-foot"><span><MapPin size={15}/> Turbat, Pakistan</span><span className="ss-foot-divider"/><span>Creating since day one</span></div>
+          </div>
+          <div className="ss-hero-art">
+            <div className="ss-art-ripple ss-art-ripple-one" aria-hidden="true"/><div className="ss-art-ripple ss-art-ripple-two" aria-hidden="true"/>
+            <div className="ss-portrait-stage"><HeroPortraitSlideshow/></div>
+            <div className="ss-float-note ss-float-note-top"><span className="ss-note-symbol"><Sparkles size={18}/></span><span><strong>Always curious.</strong><small>Always building.</small></span></div>
+            <div className="ss-float-note ss-float-note-bottom"><span className="ss-float-number">{String(projects.length).padStart(2,"0")}<span>+</span></span><span><strong>Featured projects</strong><small>Concept to creation</small></span></div>
+            <span className="ss-art-side" aria-hidden="true">DESIGN ↗ DEVELOP ↗ DELIVER</span>
+          </div>
+          <a href="#work" className="ss-scroll" aria-label="Scroll to selected work"><ArrowDownRight size={19}/><span>SCROLL TO EXPLORE</span></a>
+        </section>
+
+        <div className="ss-trust-strip" aria-label="Areas of work"><span><i/> Product development</span><span><i/> Business & strategy</span><span><i/> AI & innovation</span><span><i/> Community impact</span></div>
+
+        <section id="work" className="ss-section ss-work" aria-labelledby="ss-work-title">
+          <div className="ss-section-head"><div><p className="ss-overline">01 / A SELECTION OF MY WORK</p><h2 id="ss-work-title">Selected <em>projects.</em></h2></div><p>Ideas brought to life through development, design, and a little persistence.</p></div>
+          <div className="ss-project-grid">{projects.map((project,index)=><ProjectTile key={project.id} project={project} index={index}/>)}</div>
+          <div className="ss-section-link"><Link to="/portfolio">Explore all work <MoveUpRight size={18}/></Link></div>
+        </section>
+
+        <section id="about" className="ss-about ss-section" aria-labelledby="ss-about-title">
+          <div className="ss-about-intro"><p className="ss-overline">02 / A LITTLE ABOUT ME</p><h2 id="ss-about-title">Curiosity is<br/>my <em>superpower.</em></h2><p>I study business, build digital products, and connect technology with real human needs. For me, a good idea only becomes exciting when it makes someone's day a little better.</p><Link className="ss-text-link" to="/about">More about my story <ArrowUpRight size={18}/></Link></div>
+          <div className="ss-about-bento">
+            <div className="ss-bento ss-bento-blue"><GraduationCap size={25}/><span>Currently learning</span><strong>Business meets technology.</strong><small>University of Turbat · BBA</small></div>
+            <div className="ss-bento ss-bento-white"><span className="ss-bento-symbol">↗</span><strong>Build.<br/>Learn.<br/><em>Repeat.</em></strong><small>A simple approach to meaningful work.</small></div>
+            <div className="ss-bento ss-bento-wide"><div><span className="ss-bento-kicker">MY APPROACH</span><strong>Think clearly.<br/>Make it useful.</strong></div><span className="ss-bento-orbit" aria-hidden="true">✳</span></div>
+          </div>
+        </section>
+
+        <section id="expertise" className="ss-section ss-expertise" aria-labelledby="ss-expertise-title">
+          <div className="ss-section-head"><div><p className="ss-overline">03 / WHAT I BRING TO THE TABLE</p><h2 id="ss-expertise-title">Where ideas meet <em>execution.</em></h2></div><p>A combination of technology, business, and a healthy curiosity about what comes next.</p></div>
+          <div className="ss-expertise-grid">{expertise.map(({num,icon:Icon,title,text,detail})=><article className="ss-expertise-card" key={num}><div className="ss-expertise-top"><span>{num} / 04</span><Icon size={23} strokeWidth={1.7}/></div><div><h3>{title}</h3><p>{text}</p></div><span className="ss-expertise-detail">{detail} <ArrowUpRight size={16}/></span></article>)}</div>
+        </section>
+
+        <section id="experience" className="ss-section ss-experience" aria-labelledby="ss-experience-title">
+          <div className="ss-section-head"><div><p className="ss-overline">04 / THE JOURNEY SO FAR</p><h2 id="ss-experience-title">Experience & <em>growth.</em></h2></div><p>Still learning, always making progress.</p></div>
+          <div className="ss-journey">{journey.map((item,index)=><div className="ss-journey-row" key={item.name}><span className="ss-journey-index">0{index+1}</span><div><h3>{item.name}</h3><p>{item.role} <span>·</span> {item.note}</p></div><span className="ss-journey-period">{item.period}</span><ArrowUpRight className="ss-journey-arrow" size={19}/></div>)}</div>
+        </section>
+
+        <section className="ss-credentials" aria-label="Certificates and achievements"><Certificates/></section>
+        {gallery.length > 0 && <section className="ss-section ss-gallery"><div className="ss-section-head"><div><p className="ss-overline">05 / BEHIND THE SCENES</p><h2>Moments & <em>stories.</em></h2></div></div><div className="ss-gallery-grid">{gallery.map((g,index)=><figure key={index}><img src={g.url} alt={g.alt || g.caption} loading="lazy"/><figcaption>{g.caption}</figcaption></figure>)}</div></section>}
+        <section id="contact" className="ss-contact" aria-labelledby="ss-contact-title"><div className="ss-contact-glow" aria-hidden="true"/><div className="ss-contact-top"><span className="ss-overline">HAVE SOMETHING IN MIND?</span><span><span className="ss-status-dot"/> Open to collaborations</span></div><h2 id="ss-contact-title">Let's make something <em>remarkable.</em></h2><p>Whether you have an idea, a collaboration, or simply want to connect — I'd love to hear about it.</p><a className="ss-contact-button" href={`mailto:${contact.email}`}>Start a conversation <ArrowUpRight size={20}/></a><div className="ss-contact-bottom"><span>Good ideas start with a hello.</span><a href={contact.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={18}/> LinkedIn</a><a href="https://github.com/salmansanadev" target="_blank" rel="noopener noreferrer"><Github size={18}/> GitHub</a><a href={`mailto:${contact.email}`}><Mail size={18}/> Email</a></div></section>
+      </main>
+
+      <footer className="ss-footer"><a href="#top" className="ss-logo"><span className="ss-logo-mark">s<span>.</span></span><span>salman<span className="ss-logo-muted">sana</span></span></a><p>© {new Date().getFullYear()} Salman Sana. Made with intention.</p><div><Link to="/blog">Journal</Link><Link to="/credentials">Credentials</Link><a href="#top">Back to top ↑</a></div></footer>
+    </div>
   </div>;
 }
