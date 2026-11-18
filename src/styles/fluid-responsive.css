@@ -71,7 +71,7 @@ body { min-width:0; }
 }
 /* Phones and portrait tablets: content flows vertically.
    No fixed hero height, overlapping captions or hidden contact links. */
-@media(max-width:750px) {
+@media(max-width:950px) {
   :root { --fluid-gutter:clamp(12px,3.6vw,25px); }
   .ss-home .ss-shell { width:calc(100% - 2 * var(--fluid-gutter)); }
   .ss-home .ss-header {
@@ -221,4 +221,66 @@ body { min-width:0; }
 @media(prefers-reduced-motion:reduce) {
   .ss-home .ss-editorial-portrait, .ss-home .ss-editorial-copy { animation:none!important; }
   .ss-home .ss-editorial-portrait { opacity:1!important; }
+}
+
+/* QA: previous page animation fill kept the original -50% portrait offset after
+   switching to the stacked layout. Reset the animation/translate on tablets too. */
+@media(max-width:950px) {
+  .ss-home .ss-hero.ss-hero-editorial .ss-editorial-portrait {
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+    translate:none!important;
+  }
+  .ss-home .ss-hero.ss-hero-editorial .ss-editorial-portrait .ref-portrait {
+    transform:none!important;
+    translate:none!important;
+    overflow:visible;
+  }
+  .ss-home .ss-editorial-copy {
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+    translate:none!important;
+  }
+  .ss-home .ss-dev-code { display:none; }
+  .ss-home .ss-editorial-links { z-index:8; }
+  .ss-home .ss-editorial-portrait .hero-portrait-slide {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center bottom;
+  }
+  .ss-home .ss-about-bento {
+    width:100%;
+    max-width:100%;
+  }
+  .ss-home .ss-credentials {
+    width:100%;
+    max-width:100%;
+  }
+  .ss-home .ss-header { z-index:50; }
+  .ss-home .ss-nav.ss-nav--open { max-height:min(70dvh,560px); overflow-y:auto; }
+  .ss-home .ss-editorial-kicker { position:relative; }
+  .ss-home .ss-trust-strip { row-gap:12px; }
+}
+@media(min-width:751px) and (max-width:950px) {
+  .ss-home .ss-editorial-portrait { height:clamp(390px,54vw,530px); }
+  .ss-home .ss-hero.ss-hero-editorial { padding-top:130px; }
+  .ss-home .ss-editorial-links { margin-top:18px; }
+  .ss-home .ss-about-bento { max-width:100%; }
+}
+/* On very narrow phones, reserve space for the menu and keep action labels readable. */
+@media(max-width:420px) {
+  .ss-home .ss-header { gap:5px; }
+  .ss-home .ss-header-cta { padding-inline:8px; }
+  .ss-home .ss-brand-mark { width:34px; height:34px; }
+  .ss-home .ss-editorial-links { gap:7px; }
+  .ss-home .ss-editorial-links a { font-size:10px; padding-inline:10px; }
+  .ss-home .ss-editorial-copy .ss-actions { gap:10px; }
+  .ss-home .ss-editorial-copy .ss-actions > * { min-height:44px; }
+}
+/* Short and landscape viewports should not clip the flowing hero. */
+@media(max-height:540px) and (max-width:950px) {
+  .ss-home .ss-hero.ss-hero-editorial { height:auto; min-height:0; }
 }
