@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, BriefcaseBusiness, Code2, Github, GraduationCap, Lightbulb, Linkedin, Mail, MapPin, Menu, MoveUpRight, Sparkles, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeroPortraitSlideshow from "@/components/HeroPortraitSlideshow";
+import BrandMark from "@/components/BrandMark";
 import Certificates from "@/components/Certificates";
 import { projects } from "@/lib/portfolio-data";
 import { useSiteContent } from "@/lib/site-content";
@@ -56,7 +57,7 @@ export default function Index() {
     <div className="ss-ambient" aria-hidden="true"><i/><i/></div>
     <div className="ss-shell">
       <header className="ss-header">
-        <a className="ss-logo" href="#top" aria-label="Salman Sana home"><span className="ss-logo-mark">s<span>.</span></span><span>salman<span className="ss-logo-muted">sana</span></span></a>
+        <a className="ss-logo" href="#top" aria-label="Salman Sana home"><BrandMark className="ss-brand-mark" /><span>salman<span className="ss-logo-muted">sana</span></span></a>
         <nav className={`ss-nav ${menuOpen ? "ss-nav--open" : ""}`} aria-label="Main navigation" id="ss-navigation">
           <a href="#work" onClick={closeMenu}>Work</a><a href="#about" onClick={closeMenu}>About</a><a href="#expertise" onClick={closeMenu}>Expertise</a><a href="#experience" onClick={closeMenu}>Experience</a><Link to="/blog" onClick={closeMenu}>Journal</Link>
         </nav>
@@ -67,16 +68,18 @@ export default function Index() {
       <main>
 
         <section className="ss-hero ss-hero-editorial" aria-labelledby="ss-hero-title">
-          <div className="ss-editorial-kicker"><span><i/> INDEPENDENT CREATOR</span><span>BASED IN BALOCHISTAN · PAKISTAN</span></div>
+          <div className="ss-editorial-kicker"><span><i/> AVAILABLE FOR FREELANCE & COLLABORATION</span><span>BASED IN BALOCHISTAN · PAKISTAN</span></div>
           <h1 className="ss-editorial-name" id="ss-hero-title"><span>SALMAN</span> SANA</h1>
           <div className="ss-editorial-orbit" aria-hidden="true"/>
+          <div className="ss-dev-grid" aria-hidden="true"/>
+          <div className="ss-dev-code" aria-hidden="true"><div className="ss-dev-code-head"><span/><span/><span/><small>salman.dev</small></div><div className="ss-dev-code-body"><span className="ss-dev-code-comment">// building what matters</span><span><b>const</b> developer = {"{"}</span><span>  craft: <em>"web & apps"</em>,</span><span>  mindset: <em>"build & ship"</em></span><span>{"}"};</span><span className="ss-dev-cursor">_</span></div></div>
           <div className="ss-editorial-portrait"><HeroPortraitSlideshow/></div>
-          <div className="ss-editorial-note ss-editorial-note-top"><div className="ss-editorial-note-icon"><Sparkles size={18}/></div><div><strong>Always curious.</strong><small>Always building.</small></div></div>
+          <div className="ss-editorial-note ss-editorial-note-top"><div className="ss-editorial-note-icon"><Code2 size={18}/></div><div><strong>Design-minded.</strong><small>Code-driven.</small></div></div>
           <div className="ss-editorial-note ss-editorial-note-bottom"><span className="ss-editorial-count">{String(projects.length).padStart(2,"0")}<em>+</em></span><div><strong>Featured projects</strong><small>Concept to creation</small></div></div>
           <div className="ss-editorial-copy">
             <p className="ss-eyebrow">DEVELOPER / FOUNDER / ENTREPRENEUR</p>
-            <h2>Digital ideas.<br/><em>Real impact.</em></h2>
-            <p>I'm a developer and entrepreneur turning purposeful ideas into digital products, from Balochistan to the world.</p>
+            <h2>I build for the <em>web.</em><br/>And beyond.</h2>
+            <p>I'm Salman — a developer and founder turning complex ideas into fast, thoughtful digital products. From Balochistan, building for the world.</p>
             <div className="ss-actions"><a className="ss-button ss-button-primary" href="#work">Explore my work <ArrowUpRight size={18}/></a><a className="ss-editorial-contact" href={`mailto:${contact.email}`}>Let's collaborate <ArrowUpRight size={16}/></a></div>
           </div>
           <div className="ss-editorial-links"><a href={contact.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={16}/> LinkedIn</a><a href="https://github.com/salmansanadev" target="_blank" rel="noopener noreferrer"><Github size={16}/> GitHub</a><a href={`mailto:${contact.email}`}><Mail size={16}/> Email</a></div>
@@ -157,7 +160,7 @@ export default function Index() {
         <section id="contact" className="ss-contact" aria-labelledby="ss-contact-title"><div className="ss-contact-glow" aria-hidden="true"/><div className="ss-contact-top"><span className="ss-overline">HAVE SOMETHING IN MIND?</span><span><span className="ss-status-dot"/> Open to collaborations</span></div><h2 id="ss-contact-title">Let's make something <em>remarkable.</em></h2><p>Whether you have an idea, a collaboration, or simply want to connect — I'd love to hear about it.</p><a className="ss-contact-button" href={`mailto:${contact.email}`}>Start a conversation <ArrowUpRight size={20}/></a><div className="ss-contact-bottom"><span>Good ideas start with a hello.</span><a href={contact.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={18}/> LinkedIn</a><a href="https://github.com/salmansanadev" target="_blank" rel="noopener noreferrer"><Github size={18}/> GitHub</a><a href={`mailto:${contact.email}`}><Mail size={18}/> Email</a></div></section>
       </main>
 
-      <footer className="ss-footer"><a href="#top" className="ss-logo"><span className="ss-logo-mark">s<span>.</span></span><span>salman<span className="ss-logo-muted">sana</span></span></a><p>© {new Date().getFullYear()} Salman Sana. Made with intention.</p><div><Link to="/blog">Journal</Link><Link to="/credentials">Credentials</Link><a href="#top">Back to top ↑</a></div></footer>
+      <footer className="ss-footer"><a href="#top" className="ss-logo"><BrandMark className="ss-brand-mark" /><span>salman<span className="ss-logo-muted">sana</span></span></a><p>© {new Date().getFullYear()} Salman Sana. Made with intention.</p><div><Link to="/blog">Journal</Link><Link to="/credentials">Credentials</Link><a href="#top">Back to top ↑</a></div></footer>
     </div>
   </div>;
 }
