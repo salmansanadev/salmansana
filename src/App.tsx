@@ -12,6 +12,7 @@ import { SiteContentProvider } from "./lib/site-content";
 import "./styles/responsive.css";
 import "./styles/atelier-secondary.css";
 import "./styles/brand-white-orange-black.css";
+import "./styles/phase5-public.css";
 
 const queryClient = new QueryClient();
 const AboutPage = lazy(() => import("./pages/AboutPage.tsx"));
