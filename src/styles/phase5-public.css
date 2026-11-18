@@ -1,0 +1,213 @@
+/* Phase 5 — unified public pages; home/admin data and behaviors untouched. */
+.ref-secondary {
+  --background:0 0% 100%;
+  --foreground:0 0% 9%;
+  --card:0 0% 100%;
+  --card-foreground:0 0% 9%;
+  --primary:25 95% 53%;
+  --primary-foreground:0 0% 9%;
+  --secondary:24 100% 96%;
+  --secondary-foreground:0 0% 9%;
+  --muted:0 0% 32%;
+  --muted-foreground:0 0% 32%;
+  --border:0 0% 90%;
+  --border2:0 0% 78%;
+  --ink:0 0% 9%;
+  --navy:0 0% 9%;
+  --gold:25 95% 53%;
+  --blue-light:24 100% 96%;
+  --blue-mid:25 95% 40%;
+  --ring:25 95% 42%;
+  background:#fff;
+  color:#171717;
+}
+.ref-secondary main { background:#fff; }
+.ref-secondary .page-hero {
+  background:radial-gradient(circle at 87% 30%,rgba(249,115,22,.16),transparent 29%),#171717;
+  color:#fff;
+}
+.ref-secondary .page-hero .page-kicker { color:#FDBA74; }
+.ref-secondary .page-hero .text-yellow-300 { color:#FDBA74; }
+.ref-secondary .page-hero .page-lead { color:#E5E5E5; }
+.ref-secondary .page-hero .grid-lines { opacity:.10; }
+.ref-secondary .section-title { color:#171717; }
+.ref-secondary .eyebrow,.ref-secondary .text-primary { color:#A94308; }
+.ref-secondary .body-copy,.ref-secondary .text-muted { color:#525252; }
+.ref-secondary .border-border { border-color:#EAEAEA; }
+.ref-secondary .bg-blue-light { background:#FFF3EA; }
+.ref-secondary .bg-gold { background:#F97316; }
+.ref-secondary .primary-button {
+  border-radius:12px;
+  background:#171717;
+  color:#fff;
+}
+.ref-secondary .primary-button:hover { background:#EA580C; color:#fff; }
+.ref-secondary :is(a,button,input,textarea):focus-visible {
+  outline:3px solid #C4510C;
+  outline-offset:3px;
+}
+/* Use the Phase 1 monogram on every public route; readable header over dark heroes. */
+.ref-secondary header.fixed .p5-navbar-logo {
+  box-shadow:0 6px 20px rgba(0,0,0,.16);
+  border-radius:12px;
+}
+.ref-secondary header.fixed > .site-container,
+.ref-secondary header.fixed > div {
+  max-width:1240px;
+}
+.ref-secondary header.fixed nav a { transition:color .2s,background .2s; }
+.ref-secondary header.fixed nav a:hover { color:#F97316; }
+.ref-secondary footer { background:#171717; color:#fff; }
+.ref-secondary footer a { transition:color .2s,transform .2s; }
+.ref-secondary footer a:hover { color:#FDBA74; }
+.ref-secondary footer a:focus-visible { outline-color:#FDBA74; }
+
+/* Shared contact / lead-generation surface. Existing mailto, LinkedIn and location kept. */
+.ref-secondary .p5-contact {
+  isolation:isolate;
+  background:#171717!important;
+  border-top:1px solid rgba(255,255,255,.11);
+}
+.ref-secondary .p5-contact-grid {
+  opacity:.22;
+  background-image:linear-gradient(rgba(255,255,255,.11) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.11) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+.ref-secondary .p5-contact-orbit {
+  opacity:.36;
+  background:rgba(249,115,22,.20)!important;
+  pointer-events:none;
+}
+.ref-secondary .p5-contact h2 {
+  font-family:Manrope,system-ui,sans-serif;
+  letter-spacing:-.075em;
+  line-height:.98;
+}
+.ref-secondary .p5-contact h2 .text-yellow-300 { color:#FDBA74; }
+.ref-secondary .p5-contact .page-kicker { color:#FDBA74; }
+.ref-secondary .p5-contact a.group {
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.055);
+  backdrop-filter:blur(8px);
+  border-radius:18px;
+  min-width:0;
+  transition:transform .3s,border-color .3s,background .3s;
+}
+.ref-secondary .p5-contact a.group:hover {
+  background:rgba(255,255,255,.10);
+  border-color:rgba(249,115,22,.75);
+  transform:translateY(-3px);
+}
+.ref-secondary .p5-contact a.group strong { overflow-wrap:anywhere; }
+.ref-secondary .p5-contact a.group svg { color:#FDBA74; }
+.ref-secondary .p5-contact .bg-blue-400\/15 { background:rgba(249,115,22,.12); }
+.ref-secondary .p5-contact .text-blue-300 { color:#FDBA74; }
+.ref-secondary .p5-contact .text-white\/55 { color:#D4D4D4; }
+.ref-secondary .p5-contact .text-white\/35,
+.ref-secondary .p5-contact .text-white\/40 { color:#C3C3C3; }
+
+/* Journal archive: editorial highlight and calm high-contrast cards. */
+.p5-blog .section-space { background:#fff; }
+.p5-blog .p5-blog-feature {
+  background:#FFF3EA;
+  border:1px solid #FFE1CC;
+  box-shadow:0 22px 70px rgba(23,23,23,.07);
+}
+.p5-blog .p5-blog-feature > div:last-child {
+  background:#171717;
+}
+.p5-blog .p5-blog-feature .grid-lines {
+  background-color:#171717;
+}
+.p5-blog .p5-blog-feature h2 { color:#171717; }
+.p5-blog .p5-blog-feature .text-ink\/65 { color:#525252; }
+.p5-blog .p5-blog-card {
+  background:#fff;
+  border:1px solid #E8E8E8;
+  box-shadow:0 10px 34px rgba(23,23,23,.045);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.p5-blog .p5-blog-card:hover {
+  transform:translateY(-5px);
+  border-color:#F5BC96;
+  box-shadow:0 22px 50px rgba(23,23,23,.1);
+}
+.p5-blog .p5-blog-card > div:first-child > span:first-child {
+  background:#FFF3EA;
+  color:#A94308;
+}
+.p5-blog .p5-blog-card h3 { color:#171717; }
+.p5-blog .p5-blog-card a[aria-label] { background:#171717; color:#fff; }
+.p5-blog .p5-blog-card a[aria-label]:hover { background:#EA580C; color:#fff; }
+
+/* Individual article: readable line length and comfortable contrast. */
+.p5-blog-post .p5-article { background:#fff; }
+.p5-blog-post .p5-article .max-w-\[760px\] { max-width:760px; }
+.p5-blog-post .p5-article .border-gold { border-color:#F97316; }
+.p5-blog-post .p5-article h2 { color:#171717; line-height:1.22; }
+.p5-blog-post .p5-article .text-muted { color:#525252; }
+.p5-blog-post .p5-article li {
+  border:1px solid #EAEAEA;
+  background:#FAFAFA;
+  border-radius:13px;
+  line-height:1.6;
+}
+.p5-blog-post .p5-article li span { color:#C4510C; }
+
+/* Credentials and achievements — CSS only, Supabase + admin actions remain intact. */
+.p5-credentials .page-hero { min-height:360px; }
+.p5-credentials .ref-certificates {
+  background:#fff;
+  border-radius:0;
+  padding-block:80px;
+  margin:0;
+}
+.p5-credentials .ref-heading h2 { color:#171717; }
+.ref-secondary .ref-certificate-grid { gap:22px; }
+.ref-secondary .ref-certificate-card {
+  background:#fff;
+  border:1px solid #EAEAEA;
+  border-radius:17px;
+  overflow:hidden;
+  box-shadow:0 12px 38px rgba(23,23,23,.045);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.ref-secondary .ref-certificate-card:hover {
+  transform:translateY(-5px);
+  border-color:#F7C49F;
+  box-shadow:0 22px 50px rgba(23,23,23,.09);
+}
+.ref-secondary .ref-certificate-preview {
+  background:#FAFAFA;
+  border-bottom:1px solid #EAEAEA;
+}
+.ref-secondary .ref-certificate-image { filter:none!important; }
+.ref-secondary .ref-certificate-dialog {
+  background:#fff;
+  border-radius:16px;
+  border:1px solid #EAEAEA;
+}
+.ref-secondary .ref-certificate-card h3 { color:#171717; }
+.ref-secondary .ref-certificate-card .text-blue-mid { color:#A94308; }
+.ref-secondary .ref-certificate-notice button { color:#A94308; }
+.ref-secondary .ref-certificates :is(button,input):focus-visible {
+  outline:3px solid #C4510C;
+  outline-offset:3px;
+}
+@media(max-width:760px) {
+  .ref-secondary .p5-contact { padding-block:65px; }
+  .ref-secondary .p5-contact h2 { line-height:1.06; }
+  .p5-blog .p5-blog-feature { border-radius:20px; }
+  .p5-blog .p5-blog-card { min-height:0; }
+  .p5-credentials .ref-certificates { padding-block:54px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .ref-secondary .p5-contact a.group,
+  .ref-secondary .p5-blog-card,
+  .ref-secondary .ref-certificate-card,
+  .ref-secondary footer a {
+    transition:none!important;
+    transform:none!important;
+  }
+}
