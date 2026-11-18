@@ -5,6 +5,7 @@ import HeroPortraitSlideshow from "@/components/HeroPortraitSlideshow";
 import BrandMark from "@/components/BrandMark";
 import Certificates from "@/components/Certificates";
 import { projects } from "@/lib/portfolio-data";
+import ProjectShowcase from "@/components/ProjectShowcase";
 import { useSiteContent } from "@/lib/site-content";
 import "./reference-portfolio.css";
 import "./studio-portfolio.css";
@@ -24,22 +25,6 @@ const journey = [
   { role: "Web Developer & Website Manager", name: "Inspiration Lab", period: "Present", note: "Website development & management" },
   { role: "BBA Student", name: "University of Turbat", period: "4th semester", note: "Finance, marketing & entrepreneurship" },
 ];
-
-function ProjectTile({ project, index }: { project: (typeof projects)[number], index: number }) {
-  return <article className={`ss-project ss-project--${index % 4}`}>
-    <a href={project.link || "#contact"} target={project.link ? "_blank" : undefined} rel={project.link ? "noopener noreferrer" : undefined} className="ss-project-visual" aria-label={`Explore ${project.title}`}>
-      <div className="ss-browser"><span/><span/><span/><small>{project.link ? new URL(project.link).hostname : "Selected project"}</small></div>
-      <img src={project.preview} alt={`${project.title} website preview`} loading="lazy" decoding="async" />
-      <span className="ss-project-open" aria-hidden="true"><ArrowUpRight size={20}/></span>
-    </a>
-    <div className="ss-project-body">
-      <div className="ss-project-meta"><span>{project.position ?? project.role} / {project.category}</span><span>0{index+1}</span></div>
-      <h3>{project.title.replace(/ \([^)]*\)$/, "")}</h3>
-      <p>{project.description}</p>
-      <div className="ss-project-bottom"><div className="ss-tags">{project.tags.slice(0,2).map(tag=><span key={tag}>{tag}</span>)}</div><a href={project.link || "#contact"} target={project.link ? "_blank" : undefined} rel={project.link ? "noopener noreferrer" : undefined} aria-label={`Visit ${project.title}`}><ArrowUpRight size={19}/></a></div>
-    </div>
-  </article>;
-}
 
 export default function Index() {
   const { contact, gallery } = useSiteContent();
@@ -90,8 +75,7 @@ export default function Index() {
 
         <section id="work" className="ss-section ss-work" aria-labelledby="ss-work-title">
           <div className="ss-section-head"><div><p className="ss-overline">01 / A SELECTION OF MY WORK</p><h2 id="ss-work-title">Selected <em>projects.</em></h2></div><p>Ideas brought to life through development, design, and a little persistence.</p></div>
-          <div className="ss-project-grid">{projects.map((project,index)=><ProjectTile key={project.id} project={project} index={index}/>)}</div>
-          <div className="ss-section-link"><Link to="/portfolio">Explore all work <MoveUpRight size={18}/></Link></div>
+          <ProjectShowcase variant="home" />
         </section>
 
         <section id="about" className="ss-about ss-section" aria-labelledby="ss-about-title">
