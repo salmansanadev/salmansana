@@ -1,0 +1,175 @@
+/*
+ * Salman Sana / 70–20–10 brand refresh
+ * Primary surfaces: #FFFFFF; Carbon: #171717; Accent: #F97316.
+ * Imported after existing page styles to preserve layout, media, and motion.
+ * Scope public routes; do not alter the authenticated admin interface.
+ */
+.ss-home {
+  --ss-paper: #FFFFFF;
+  --ss-ink: #171717;
+  --ss-muted: #525252;
+  --ss-accent: #F97316;
+  --ss-orange: #F97316;
+  --ss-soft: #FFF3EA;
+  --ss-line: #EAEAEA;
+  background: #FFFFFF;
+  color: #171717;
+}
+.ss-home .ss-ambient { opacity: .28; }
+.ss-home .ss-ambient i,
+.ss-home .ss-ambient i + i { background: radial-gradient(circle, #FFEAD9 0%, transparent 68%); opacity: .38; }
+.ss-home .ss-header {
+  background: rgba(255,255,255,.94);
+  border-color: #EAEAEA;
+  box-shadow: 0 12px 38px rgba(23,23,23,.05);
+}
+.ss-home .ss-logo-mark { background: #171717; color: #FFFFFF; }
+.ss-home .ss-logo-mark span,
+.ss-home .ss-logo-muted { color: #F97316; }
+.ss-home .ss-nav a { color: #171717; }
+.ss-home .ss-nav a:hover, .ss-home .ss-nav a:focus-visible { color: #C4510C; }
+.ss-home .ss-header-cta { background: #F97316; color: #171717; }
+.ss-home .ss-header-cta:hover { background: #EA580C; color: #FFFFFF; }
+.ss-home .ss-hero.ss-hero-editorial {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  box-shadow: 0 24px 75px rgba(23,23,23,.05);
+}
+.ss-home .ss-editorial-name,
+.ss-home .ss-hero.ss-hero-editorial h1.ss-editorial-name { color: #171717; }
+.ss-home .ss-hero.ss-hero-editorial h1.ss-editorial-name > span { -webkit-text-stroke-color: #171717; }
+.ss-home .ss-editorial-kicker, .ss-home .ss-editorial-scroll { color: #525252; }
+.ss-home .ss-editorial-kicker i,
+.ss-home .ss-editorial-kicker span i { background: #F97316; }
+.ss-home .ss-editorial-orbit { border-color: rgba(249,115,22,.19); }
+.ss-home .ss-editorial-note {
+  background: rgba(255,255,255,.94);
+  border-color: #EAEAEA;
+  box-shadow: 0 12px 32px rgba(23,23,23,.07);
+}
+.ss-home .ss-editorial-note-icon { background: #FFF3EA; color: #C4510C; }
+.ss-home .ss-editorial-count em,
+.ss-home .ss-editorial-copy h2 em,
+.ss-home .ss-section-head em,
+.ss-home .ss-about h2 em,
+.ss-home .ss-presentation-details h3 em { color: #C4510C; }
+.ss-home .ss-editorial-copy h2,
+.ss-home .ss-section-head h2,
+.ss-home .ss-about h2 { color: #171717; }
+.ss-home .ss-editorial-copy > p:not(.ss-eyebrow),
+.ss-home .ss-section-head > p,
+.ss-home .ss-about-intro > p:not(.ss-overline) { color: #525252; }
+.ss-home .ss-eyebrow, .ss-home .ss-overline { color: #B84908; }
+.ss-home .ss-button-primary,
+.ss-home .ss-contact-button { background: #F97316; color: #171717; }
+.ss-home .ss-button-primary:hover,
+.ss-home .ss-contact-button:hover { background: #EA580C; color: #FFFFFF; }
+.ss-home .ss-editorial-contact,
+.ss-home .ss-section-link a,
+.ss-home .ss-text-link { color: #171717; border-color: #F97316; }
+.ss-home .ss-editorial-links a { color: #171717; border-color: #EAEAEA; background: rgba(255,255,255,.9); }
+.ss-home .ss-trust-strip,
+.ss-home .ss-project,
+.ss-home .ss-expertise-card,
+.ss-home .ss-bento,
+.ss-home .ss-presentation-feature {
+  border-color: #EAEAEA;
+  box-shadow: 0 15px 45px rgba(23,23,23,.045);
+}
+.ss-home .ss-trust-strip { background: #FFFFFF; }
+.ss-home .ss-trust-strip i, .ss-home .ss-status-dot { background: #F97316; }
+.ss-home .ss-project { background: #FFFFFF; }
+.ss-home .ss-project:hover { box-shadow: 0 22px 55px rgba(23,23,23,.09); }
+.ss-home .ss-project-visual,
+.ss-home .ss-project--1 .ss-project-visual,
+.ss-home .ss-project--2 .ss-project-visual,
+.ss-home .ss-project--3 .ss-project-visual { background: #FAFAFA; }
+.ss-home .ss-browser, .ss-home .ss-tags span { background: #FAFAFA; border-color: #EAEAEA; }
+.ss-home .ss-browser span { background: #F97316; }
+.ss-home .ss-project-open,
+.ss-home .ss-project-bottom > a { background: #171717; color: #FFFFFF; }
+.ss-home .ss-project-open:hover,
+.ss-home .ss-project-bottom > a:hover { background: #F97316; color: #171717; }
+.ss-home .ss-project-meta,
+.ss-home .ss-project p,
+.ss-home .ss-project h3,
+.ss-home .ss-tags span { color: #171717; }
+.ss-home .ss-project p { color: #525252; }
+.ss-home .ss-project-bottom { border-color: #EAEAEA; }
+.ss-home .ss-bento-blue { background: #FFF3EA; color: #171717; }
+.ss-home .ss-bento-wide { background: #171717; color: #FFFFFF; }
+.ss-home .ss-expertise-card { background: #FFFFFF; }
+.ss-home .ss-expertise-top svg,
+.ss-home .ss-journey-arrow { color: #C4510C; }
+.ss-home .ss-presentation-feature { background: #FFFFFF; }
+.ss-home .ss-presentation-chip { background: #FFF3EA; border-color: #FFD9C0; color: #A94308; }
+.ss-home .ss-presentation-chip-dot { background: #F97316; }
+.ss-home .ss-presentation-facts span { background: #FAFAFA; border-color: #EAEAEA; }
+.ss-home .ss-presentation-facts strong { color: #A94308; }
+.ss-home .ss-presentation-link { background: #171717; color: #FFFFFF; }
+.ss-home .ss-presentation-link:hover { background: #EA580C; }
+.ss-home .ss-contact { background: #171717; color: #FFFFFF; }
+.ss-home .ss-contact h2 em { color: #F97316; }
+.ss-home .ss-footer { background: #FFFFFF; color: #171717; }
+.ss-home :is(a,button):focus-visible { outline: 3px solid #C4510C; outline-offset: 4px; }
+
+/* Consistent public subpages: white canvas, black typography, orange micro-accents. */
+.ref-secondary {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 9%;
+  --primary: 25 95% 53%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 24 100% 96%;
+  --secondary-foreground: 0 0% 9%;
+  --accent: 25 95% 53%;
+  --accent-foreground: 0 0% 9%;
+  --muted: 0 0% 32%;
+  --muted-foreground: 0 0% 32%;
+  --ink: 0 0% 9%;
+  --navy: 0 0% 9%;
+  --surface: 0 0% 100%;
+  --gold: 25 95% 53%;
+  --border: 0 0% 91%;
+  --border2: 0 0% 82%;
+  --ring: 25 95% 53%;
+  background: #FFFFFF;
+  color: #171717;
+}
+.ref-secondary .page-hero { background: #171717; color: #FFFFFF; }
+.ref-secondary .page-kicker,
+.ref-secondary .page-title .text-yellow-300 { color: #FDBA74; }
+.ref-secondary .eyebrow,
+.ref-secondary .text-primary,
+.ref-secondary .ref-work-page .ref-project-role,
+.ref-secondary .ref-work-page .ref-role-heading h3 { color: #B84908; }
+.ref-secondary .section-title { color: #171717; }
+.ref-secondary .body-copy,
+.ref-secondary .text-muted { color: #525252; }
+.ref-secondary .outline-card,
+.ref-secondary .ref-work-page .ref-real-project {
+  background: #FFFFFF;
+  border-color: #EAEAEA;
+  box-shadow: 0 12px 38px rgba(23,23,23,.045);
+}
+.ref-secondary .outline-card:hover { border-color: #F97316; }
+.ref-secondary .primary-button { background: #171717; color: #FFFFFF; }
+.ref-secondary .primary-button:hover { background: #EA580C; color: #FFFFFF; }
+.ref-secondary .secondary-button { background: #FFFFFF; color: #171717; border-color: #D4D4D4; }
+.ref-secondary .bg-gold { background: #F97316; }
+.ref-secondary .bg-blue-light { background: #FFF3EA; }
+.ref-secondary .bg-ink { background: #171717; }
+.ref-secondary .border-border { border-color: #EAEAEA; }
+.ref-secondary .ref-work-page .ref-project-tags .ref-pill { background: #FAFAFA; border-color: #EAEAEA; color: #171717; }
+.ref-secondary .ref-work-page .ref-filters button.active { color: #B84908; }
+.ref-secondary .ref-work-page .ref-art-arrow { background: #F97316; color: #171717; }
+.ref-secondary footer.bg-navy { background: #171717; }
+.ref-secondary :is(a,button):focus-visible { outline: 3px solid #C4510C; outline-offset: 3px; }
+
+/* Preserve color photography and reduced-motion preferences. */
+.ss-home :is(.ss-project-visual img,.ss-gallery-grid img,.ss-editorial-portrait .hero-portrait-slide),
+.ref-secondary img { filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ss-home *, .ss-home *::before, .ss-home *::after { scroll-behavior: auto; }
+}
