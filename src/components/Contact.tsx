@@ -4,9 +4,9 @@ import { useSiteContent } from "@/lib/site-content";
 const Contact = () => {
   const { contact } = useSiteContent();
   return (
-    <section id="contact" className="noise relative overflow-hidden bg-navy py-20 text-white md:py-28">
-      <div className="contact-dots absolute inset-0" />
-      <div className="absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl" />
+    <section id="contact" className="p5-contact noise relative overflow-hidden bg-navy py-20 text-white md:py-28">
+      <div className="p5-contact-grid contact-dots absolute inset-0" />
+      <div className="p5-contact-orbit absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl" />
       <div className="site-container relative">
         <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_.85fr]">
           <div>
