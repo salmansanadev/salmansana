@@ -31,12 +31,27 @@ const journey = [
 export default function Index() {
   const { contact, gallery } = useSiteContent();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   useEffect(() => {
     if (!menuOpen) return;
     const handleEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setMenuOpen(false); };
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
   }, [menuOpen]);
+
+  useEffect(() => {
+    const ids = ["work", "about", "expertise", "experience"];
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+      if (visible[0]) setActiveSection(visible[0].target.id);
+    }, { rootMargin: "-15% 0px -55% 0px", threshold: [0, 0.2, 0.5] });
+    ids.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
   return <div className="ss-home" id="top">
@@ -46,7 +61,7 @@ export default function Index() {
       <header className="ss-header">
         <a className="ss-logo" href="#top" aria-label="Salman Sana home"><BrandMark className="ss-brand-mark" /><span>salman<span className="ss-logo-muted">sana</span></span></a>
         <nav className={`ss-nav ${menuOpen ? "ss-nav--open" : ""}`} aria-label="Main navigation" id="ss-navigation">
-          <a href="#work" onClick={closeMenu}>Work</a><a href="#about" onClick={closeMenu}>About</a><a href="#expertise" onClick={closeMenu}>Expertise</a><a href="#experience" onClick={closeMenu}>Experience</a><Link to="/blog" onClick={closeMenu}>Journal</Link>
+          <a href="#work" aria-current={activeSection === "work" ? "location" : undefined} onClick={closeMenu}>Work</a><a href="#about" aria-current={activeSection === "about" ? "location" : undefined} onClick={closeMenu}>About</a><a href="#expertise" aria-current={activeSection === "expertise" ? "location" : undefined} onClick={closeMenu}>Expertise</a><a href="#experience" aria-current={activeSection === "experience" ? "location" : undefined} onClick={closeMenu}>Experience</a><Link to="/blog" onClick={closeMenu}>Journal</Link>
         </nav>
         <a className="ss-header-cta" href={`mailto:${contact.email}`}>Let's talk <ArrowUpRight size={16}/></a>
         <button className="ss-mobile-menu" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-controls="ss-navigation" aria-expanded={menuOpen} onClick={()=>setMenuOpen(value=>!value)}>{menuOpen?<X size={21}/>:<Menu size={21}/>}</button>

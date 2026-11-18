@@ -194,3 +194,90 @@
     transform:translateX(-50%);
   }
 }
+
+
+/* Phase 4 — deliberate interaction design, extending the existing motion lifecycle.
+   No additional animation runtime or heavy canvas effects. */
+.site-reading-progress {
+  height: 3px;
+  background: #F97316;
+  mix-blend-mode: normal;
+  transform: scaleX(var(--reading-progress, 0));
+  transition: transform .08s linear;
+}
+.ss-home .ss-nav a[aria-current="location"] {
+  color: #B84908;
+}
+.ss-home .ss-nav a[aria-current="location"]::after {
+  left: 0;
+  right: 0;
+}
+.ss-home .ss-nav a:focus-visible,
+.ss-home .ss-mobile-menu:focus-visible {
+  outline: 3px solid #C4510C;
+  outline-offset: 4px;
+}
+.ss-home .ss-section,
+.ss-home .ss-tech-section,
+.ps-portfolio-page .ps-page-section {
+  scroll-margin-top: clamp(80px, 9vw, 110px);
+}
+.ss-home .ss-button,
+.ss-home .ss-header-cta,
+.ss-home .ss-contact-button,
+.ps-showcase .ps-visit,
+.ps-showcase .ps-more-link {
+  -webkit-tap-highlight-color: transparent;
+}
+.ps-showcase .ps-card,
+.dev-stack .dev-stack-card {
+  backface-visibility: hidden;
+  transform: perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+  transition: transform .36s cubic-bezier(.2,.7,.2,1),box-shadow .36s ease,border-color .36s ease;
+}
+.ps-showcase .ps-card:hover,
+.ps-showcase .ps-card:focus-within,
+.dev-stack .dev-stack-card:hover,
+.dev-stack .dev-stack-card:focus-within {
+  transform: perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-5px);
+}
+.ps-showcase .ps-visit svg,
+.ps-showcase .ps-more-link svg,
+.dev-stack .dev-stack-icon svg {
+  transition: transform .28s cubic-bezier(.2,.7,.2,1);
+}
+.ps-showcase .ps-visit:is(:hover,:focus-visible) svg,
+.ps-showcase .ps-more-link:is(:hover,:focus-visible) svg {
+  transform: translate(3px,-3px);
+}
+.dev-stack .dev-stack-card:hover .dev-stack-icon svg {
+  transform: rotate(-7deg) scale(1.06);
+}
+.ss-home .ss-gallery-grid figure,
+.ps-showcase .ps-preview {
+  isolation: isolate;
+}
+@media (hover: none), (pointer: coarse) {
+  .ps-showcase .ps-card,
+  .ps-showcase .ps-card:hover,
+  .ps-showcase .ps-card:focus-within,
+  .dev-stack .dev-stack-card,
+  .dev-stack .dev-stack-card:hover,
+  .dev-stack .dev-stack-card:focus-within {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-reading-progress { transition: none !important; }
+  .ps-showcase *, .ps-showcase *::before, .ps-showcase *::after,
+  .dev-stack *, .dev-stack *::before, .dev-stack *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .ps-showcase .ps-card,
+  .ps-showcase .ps-card:hover,
+  .dev-stack .dev-stack-card,
+  .dev-stack .dev-stack-card:hover {
+    transform: none !important;
+  }
+}

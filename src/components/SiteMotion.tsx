@@ -6,6 +6,7 @@ const revealSelector = [
   ".ref-certificate-card", ".ref-role-heading", ".ref-heading h2", ".ref-work-bar", ".ref-project", ".ref-services > h2",
   ".ref-service", ".ref-experience-row", ".ref-gallery figure",
   ".ss-section-head", ".ss-project", ".ss-about-intro", ".ss-bento",
+  ".ps-card", ".ps-page-section-intro", ".dev-stack-heading", ".dev-stack-card",
   ".ss-expertise-card", ".ss-journey-row", ".ss-gallery-grid figure", ".ss-contact",
   ".ref-contact > h2", ".ref-contact > p", ".ref-contact > a", ".ref-contact footer > a",
   ".ref-secondary main h1", ".ref-secondary main h2", ".ref-secondary main article",
@@ -24,6 +25,7 @@ export default function SiteMotion() {
     const seen = new WeakSet<Element>();
     const running = new Set<Animation>();
     let frame = 0;
+    let scanFrame = 0;
     let pointerFrame = 0;
     let activeCard: HTMLElement | null = null;
     let activeButton: HTMLElement | null = null;
@@ -53,7 +55,7 @@ export default function SiteMotion() {
         if (seen.has(element)) return;
         seen.add(element);
         // Descendant titles should not animate twice inside a moving card.
-        if (!element.matches("article,figure,.ref-project,.ref-service,.outline-card,.ss-project,.ss-bento,.ss-expertise-card,.ss-journey-row,.ss-contact,.ss-section-head") && element.closest("article,figure,.ref-project,.ref-service,.outline-card,.ss-project,.ss-bento,.ss-expertise-card,.ss-journey-row,.ss-contact")) return;
+        if (!element.matches("article,figure,.ref-project,.ref-service,.outline-card,.ss-project,.ss-bento,.ss-expertise-card,.ss-journey-row,.ss-contact,.ss-section-head,.ps-card,.dev-stack-card") && element.closest("article,figure,.ref-project,.ref-service,.outline-card,.ss-project,.ss-bento,.ss-expertise-card,.ss-journey-row,.ss-contact,.ps-card,.dev-stack-card")) return;
         observer.observe(element);
       });
       portrait = document.querySelector(".ref-portrait");
@@ -98,7 +100,7 @@ export default function SiteMotion() {
     const onPointer = (event: PointerEvent) => {
       if (reduced.matches || !finePointer.matches || event.pointerType === "touch") return;
       const target = event.target instanceof Element ? event.target : null;
-      const card = target?.closest<HTMLElement>(".ref-project,.ss-project,.ss-expertise-card") ?? null;
+      const card = target?.closest<HTMLElement>(".ref-project,.ss-project,.ss-expertise-card,.ps-card,.dev-stack-card") ?? null;
       const button = target?.closest<HTMLElement>(".ref-pill.ref-dark,.ss-button,.ss-header-cta,.ss-contact-button") ?? null;
       if (activeCard !== card || activeButton !== button) resetPointer();
       activeCard = card;
@@ -126,7 +128,12 @@ export default function SiteMotion() {
       clouds?.style.removeProperty("--cloud-scroll");
       studioHero?.style.removeProperty("--studio-parallax");
     };
-    const mutations = new MutationObserver(scan);
+    // Batch CMS and filter-driven DOM updates into one scan per frame.
+    const scheduleScan = () => {
+      if (scanFrame) return;
+      scanFrame = window.requestAnimationFrame(() => { scanFrame = 0; scan(); });
+    };
+    const mutations = new MutationObserver(scheduleScan);
     mutations.observe(document.getElementById("root")!, { childList: true, subtree: true });
     const size = new ResizeObserver(scheduleScroll);
     size.observe(document.body);
@@ -146,6 +153,7 @@ export default function SiteMotion() {
       document.removeEventListener("pointerleave", resetPointer);
       reduced.removeEventListener("change", preferenceChanged);
       window.cancelAnimationFrame(frame);
+      window.cancelAnimationFrame(scanFrame);
       preferenceChanged();
     };
   }, [pathname]);
