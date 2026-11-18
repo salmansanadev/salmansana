@@ -1,0 +1,26 @@
+/* Phase 2 portfolio route: shared typography with white / black / orange brand. */
+.ps-portfolio-page{background:#fff;color:#171717;min-height:100vh;overflow:hidden}
+.ps-page-hero{position:relative;min-height:450px;padding:158px 0 80px;background:#171717;color:#fff;isolation:isolate;overflow:hidden}
+.ps-page-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(90deg,transparent,#000)}
+.ps-page-hero::after{content:"";position:absolute;right:-160px;top:-280px;width:650px;aspect-ratio:1;border:1px solid #f973163b;border-radius:50%;box-shadow:0 0 0 85px #f9731608,0 0 0 190px #ffffff04;pointer-events:none}
+.ps-page-hero-inner{position:relative;z-index:2}
+.ps-page-eyebrow{display:flex;align-items:center;gap:10px;color:#fcb588;font-size:11px;font-weight:800;letter-spacing:.18em}
+.ps-page-eyebrow span{width:8px;height:8px;border-radius:50%;background:#f97316;box-shadow:0 0 0 5px #f973162a}
+.ps-page-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 210px;align-items:end;gap:45px;margin-top:25px}
+.ps-page-hero h1{margin:0;font:800 clamp(58px,9vw,125px)/1.02 Manrope,system-ui,sans-serif;letter-spacing:-.082em;color:#fff}
+.ps-page-hero h1 em{color:#f97316;font:400 .9em/1 Georgia,serif;letter-spacing:-.08em}
+.ps-page-hero-grid > div:first-child > p{max-width:680px;margin:25px 0 0;color:#d4d4d4;font-size:clamp(15px,1.5vw,18px);line-height:1.8}
+.ps-page-hero-aside{display:flex;flex-direction:column;align-items:flex-start;gap:16px;color:#d4d4d4;font-size:13px;line-height:1.6}
+.ps-page-total{display:flex;align-items:flex-end;gap:12px;font:800 74px/.85 Manrope,system-ui,sans-serif;color:#fff;letter-spacing:-.08em}
+.ps-page-total small{margin-bottom:8px;font:700 10px Manrope,system-ui,sans-serif;letter-spacing:.14em;color:#f97316}
+.ps-page-hero-aside a{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;border-bottom:1px solid #f97316;padding:6px 0;font-size:12px;font-weight:800}
+.ps-page-deco{position:absolute;top:25px;right:16px;color:#f97316;opacity:.4}
+.ps-page-deco svg{height:42px;width:42px}
+.ps-page-section{padding:68px 0 115px;scroll-margin-top:100px;background:#fff}
+.ps-page-section-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:25px;margin-bottom:33px;border-bottom:1px solid #e9e9e9;padding-bottom:21px}
+.ps-page-section-intro span{font-size:11px;font-weight:800;letter-spacing:.16em;color:#aa470e}
+.ps-page-section-intro p{max-width:410px;font-size:13px;line-height:1.7;color:#525252;margin:0}
+.ps-portfolio-page :is(a,button):focus-visible{outline:3px solid #f97316;outline-offset:3px}
+@media(max-width:800px){.ps-page-hero{padding:145px 0 65px}.ps-page-hero-grid{grid-template-columns:minmax(0,1fr) 145px;gap:18px}.ps-page-total{font-size:62px}.ps-page-hero h1{font-size:clamp(55px,9vw,94px)}}
+@media(max-width:640px){.ps-page-hero{min-height:auto;padding:132px 0 50px}.ps-page-hero-grid{grid-template-columns:1fr;gap:30px}.ps-page-hero h1{font-size:clamp(54px,13vw,88px)}.ps-page-hero-grid > div:first-child > p{font-size:14px}.ps-page-hero-aside{flex-direction:row;align-items:center;flex-wrap:wrap;gap:15px}.ps-page-total{font-size:52px}.ps-page-section{padding:45px 0 70px}.ps-page-section-intro{flex-direction:column;gap:10px}.ps-page-hero::after{width:380px;right:-240px;top:-80px}}
+@media(prefers-reduced-motion:reduce){.ps-page-hero *{scroll-behavior:auto}}
