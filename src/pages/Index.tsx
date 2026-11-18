@@ -6,6 +6,8 @@ import BrandMark from "@/components/BrandMark";
 import Certificates from "@/components/Certificates";
 import { projects } from "@/lib/portfolio-data";
 import ProjectShowcase from "@/components/ProjectShowcase";
+import DeveloperExpertise from "@/components/DeveloperExpertise";
+import "./phase3-profile.css";
 import { useSiteContent } from "@/lib/site-content";
 import "./reference-portfolio.css";
 import "./studio-portfolio.css";
@@ -83,7 +85,7 @@ export default function Index() {
           <div className="ss-about-bento">
             <div className="ss-bento ss-bento-blue"><GraduationCap size={25}/><span>Currently learning</span><strong>Business meets technology.</strong><small>University of Turbat · BBA</small></div>
             <div className="ss-bento ss-bento-white"><span className="ss-bento-symbol">↗</span><strong>Build.<br/>Learn.<br/><em>Repeat.</em></strong><small>A simple approach to meaningful work.</small></div>
-            <div className="ss-bento ss-bento-wide"><div><span className="ss-bento-kicker">MY APPROACH</span><strong>Think clearly.<br/>Make it useful.</strong></div><span className="ss-bento-orbit" aria-hidden="true">✳</span></div>
+            <div className="ss-bento ss-bento-wide"><div><span className="ss-bento-kicker">MY APPROACH</span><strong>Think clearly.<br/>Make it useful.</strong></div><span className="ss-bento-orbit" aria-hidden="true">✳</span><div className="ss-about-grid-art" aria-hidden="true"><span /><span /><span /></div></div>
           </div>
         </section>
 
@@ -92,9 +94,11 @@ export default function Index() {
           <div className="ss-expertise-grid">{expertise.map(({num,icon:Icon,title,text,detail})=><article className="ss-expertise-card" key={num}><div className="ss-expertise-top"><span>{num} / 04</span><Icon size={23} strokeWidth={1.7}/></div><div><h3>{title}</h3><p>{text}</p></div><span className="ss-expertise-detail">{detail} <ArrowUpRight size={16}/></span></article>)}</div>
         </section>
 
+        <div className="ss-section ss-tech-section"><DeveloperExpertise /></div>
+
         <section id="experience" className="ss-section ss-experience" aria-labelledby="ss-experience-title">
           <div className="ss-section-head"><div><p className="ss-overline">04 / THE JOURNEY SO FAR</p><h2 id="ss-experience-title">Experience & <em>growth.</em></h2></div><p>Still learning, always making progress.</p></div>
-          <div className="ss-journey">{journey.map((item,index)=><div className="ss-journey-row" key={item.name}><span className="ss-journey-index">0{index+1}</span><div><h3>{item.name}</h3><p>{item.role} <span>·</span> {item.note}</p></div><span className="ss-journey-period">{item.period}</span><ArrowUpRight className="ss-journey-arrow" size={19}/></div>)}</div>
+          <div className="ss-journey ss-journey--phase3">{journey.map((item,index)=><div className="ss-journey-row" key={item.name}><span className="ss-journey-index">0{index+1}</span><div><span className="ss-journey-role">{item.role}</span><h3>{item.name}</h3><p>{item.role} <span>·</span> {item.note}</p></div><span className="ss-journey-period">{item.period}</span><ArrowUpRight className="ss-journey-arrow" size={19}/></div>)}</div>
         </section>
 
         <section className="ss-presentation ss-section" id="presentation" aria-labelledby="ss-presentation-title">

@@ -1,0 +1,28 @@
+/* Phase 3 — About route. Scoped outside admin; preserves original content. */
+.about-phase3{background:#fff;color:#171717}
+.about-phase3 .page-hero{background:#171717!important;isolation:isolate}
+.about-phase3 .page-hero .page-kicker{color:#FDBA74}
+.about-phase3 .page-hero .text-yellow-300{color:#FDBA74}
+.about-phase3 .page-title{letter-spacing:-.07em}
+.about-phase3 .page-lead{color:#E0E0E0}
+.about-phase3 .section-space{padding-top:clamp(64px,7vw,100px);padding-bottom:clamp(64px,7vw,100px)}
+.about-phase3 .eyebrow{color:#A94308}
+.about-phase3 .section-title{color:#171717}
+.about-phase3 .body-copy{color:#525252;line-height:1.85}
+.about-phase3 .section-space img{filter:none;box-shadow:0 20px 50px #17171715}
+.about-phase3 .outline-card{background:#fff!important;border:1px solid #eaeaea!important;box-shadow:0 12px 38px #17171708;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.about-phase3 .outline-card:hover{transform:translateY(-5px);border-color:#F97316!important;box-shadow:0 21px 46px #17171713}
+.about-phase3 .bg-\[\#eef0f7\]{background:#FAFAFA}
+.about-phase3 .primary-button{background:#171717;color:#fff;border-radius:12px}
+.about-phase3 .primary-button:hover{background:#EA580C}
+.about-phase3 .bg-blue-light{background:#FFF3EA}
+.about-phase3 .bg-amber-light,.about-phase3 .bg-teal-light{background:#FFF3EA}
+.about-phase3 .text-amber,.about-phase3 .text-teal,.about-phase3 .text-primary{color:#A94308}
+.about-phase3 .bg-primary{background:#F97316;color:#171717}
+.about-phase3 .bg-gold{background:#F97316}
+.about-phase3 .outline-card h3{color:#171717}
+.about-phase3 .outline-card p{color:#525252}
+.about-phase3 .dev-stack--compact{padding-top:25px;padding-bottom:70px}
+.about-phase3 :is(a,button):focus-visible{outline:3px solid #C4510C;outline-offset:3px}
+@media(max-width:640px){.about-phase3 .dev-stack--compact{padding:24px 0 50px}.about-phase3 .section-space{padding-block:58px}.about-phase3 .section-space img{height:auto;max-height:520px}}
+@media(prefers-reduced-motion:reduce){.about-phase3 .outline-card{transition:none!important;transform:none!important}}
