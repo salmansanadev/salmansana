@@ -7,6 +7,7 @@ import { projects } from "@/lib/portfolio-data";
 import { useSiteContent } from "@/lib/site-content";
 import "./reference-portfolio.css";
 import "./studio-portfolio.css";
+import "@/styles/brand-white-orange-black.css";
 
 const expertise = [
   { num: "01", icon: Code2, title: "Digital experiences", text: "Websites and products that look considered, work smoothly, and help people get things done.", detail: "Web development · UI/UX" },
