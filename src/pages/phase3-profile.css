@@ -1,0 +1,44 @@
+/* Phase 3: home About + Expertise + Experience refinements */
+.ss-home .ss-about{gap:clamp(36px,5vw,75px);align-items:stretch}
+.ss-home .ss-about-intro{position:relative;padding:24px 0}
+.ss-home .ss-about-intro:before{content:"";position:absolute;left:0;top:0;width:62px;height:3px;background:#F97316;border-radius:5px}
+.ss-home .ss-about-intro h2{line-height:1.08}
+.ss-home .ss-about-bento{position:relative}
+.ss-home .ss-bento{position:relative;overflow:hidden;border:1px solid #E9E9E9;box-shadow:0 15px 48px #1717170a;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.ss-home .ss-bento:hover{transform:translateY(-5px);box-shadow:0 22px 55px #17171714}
+.ss-home .ss-bento-blue{background:#FFF3EA!important}
+.ss-home .ss-bento-white{background:#FFF!important}
+.ss-home .ss-bento-wide{background:#171717!important;isolation:isolate}
+.ss-home .ss-bento-wide strong,.ss-home .ss-bento-wide .ss-bento-kicker{position:relative;z-index:2;color:#fff}
+.ss-home .ss-bento-wide .ss-bento-kicker{color:#FDBA74}
+.ss-home .ss-bento-orbit{color:#F97316!important;opacity:.65}
+.ss-home .ss-about-grid-art{position:absolute;z-index:0;inset:0;pointer-events:none;background-image:linear-gradient(#ffffff0c 1px,transparent 1px),linear-gradient(90deg,#ffffff0c 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(90deg,transparent,#000)}
+.ss-home .ss-about-grid-art span{position:absolute;width:110px;aspect-ratio:1;border-radius:50%;border:1px solid #F973163c;right:7%;top:8%;box-shadow:0 0 0 35px #F973160b,0 0 0 70px #F9731605}
+.ss-home .ss-about-grid-art span:nth-child(2){width:6px;height:6px;top:23%;right:23%;background:#F97316;border:0;box-shadow:none}
+.ss-home .ss-about-grid-art span:nth-child(3){width:6px;height:6px;top:68%;right:12%;background:#F97316;border:0;box-shadow:none}
+.ss-home .ss-expertise-card{border:1px solid #EAEAEA!important;box-shadow:0 14px 40px #17171708!important;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.ss-home .ss-expertise-card:hover{transform:translateY(-5px);border-color:#F97316!important;box-shadow:0 22px 48px #17171712!important}
+.ss-home .ss-expertise-top svg{color:#B84908}
+.ss-home .ss-expertise-detail{color:#A94308}
+.ss-home .ss-tech-section{padding-top:0}
+.ss-home .ss-tech-section .dev-stack{padding-top:95px}
+.ss-home .ss-journey--phase3{position:relative;border:1px solid #EAEAEA;border-radius:23px;padding:12px 26px;background:#fff;box-shadow:0 15px 50px #17171708;overflow:hidden}
+.ss-home .ss-journey--phase3 .ss-journey-row{position:relative;display:grid;grid-template-columns:55px minmax(0,1fr) auto 24px;gap:24px;align-items:center;padding:27px 12px;border-color:#EAEAEA;transition:background .25s ease,padding-left .25s ease}
+.ss-home .ss-journey--phase3 .ss-journey-row:hover{background:#FFF7F1;padding-left:22px}
+.ss-home .ss-journey--phase3 .ss-journey-index{display:grid;place-items:center;width:43px;height:43px;border:1px solid #FFD8BC;border-radius:13px;background:#FFF3EA;color:#A94308;font:800 12px ui-monospace,Consolas,monospace}
+.ss-home .ss-journey--phase3 .ss-journey-role{display:block;margin-bottom:7px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#A94308}
+.ss-home .ss-journey--phase3 .ss-journey-row h3{font-family:Manrope,system-ui,sans-serif;font-size:clamp(18px,2vw,24px);letter-spacing:-.035em;font-weight:800;color:#171717;margin:0 0 8px}
+.ss-home .ss-journey--phase3 .ss-journey-row p{color:#525252;line-height:1.6}
+.ss-home .ss-journey--phase3 .ss-journey-period{font-size:12px;color:#525252}
+.ss-home .ss-journey--phase3 .ss-journey-arrow{color:#B84908}
+@media(max-width:750px){
+.ss-home .ss-about-intro{padding-top:19px}
+.ss-home .ss-tech-section .dev-stack{padding-top:64px}
+.ss-home .ss-journey--phase3{padding:8px 12px;border-radius:17px}
+.ss-home .ss-journey--phase3 .ss-journey-row{grid-template-columns:42px minmax(0,1fr);gap:8px 14px;padding:18px 6px}
+.ss-home .ss-journey--phase3 .ss-journey-row:hover{padding-left:6px}
+.ss-home .ss-journey--phase3 .ss-journey-period{grid-column:2;grid-row:auto;font-size:11px}
+.ss-home .ss-journey--phase3 .ss-journey-arrow{display:none}
+.ss-home .ss-journey--phase3 .ss-journey-index{width:38px;height:38px}
+}
+@media(prefers-reduced-motion:reduce){.ss-home .ss-bento,.ss-home .ss-expertise-card,.ss-home .ss-journey--phase3 .ss-journey-row{transition:none!important;transform:none!important}}
