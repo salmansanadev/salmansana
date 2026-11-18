@@ -1,0 +1,224 @@
+/* Fluid, edge-aware portfolio sizing.
+   Keep content comfortably within each viewport without forcing desktop widths on phones.
+   Loaded after the established brand styles and scoped to public routes only. */
+:root { --fluid-gutter: clamp(14px, 2.4vw, 54px); }
+html { max-width:100%; scroll-padding-top:90px; }
+body { min-width:0; }
+#root { min-width:0; width:100%; }
+.ss-home, .ref-secondary { width:100%; max-width:100%; }
+.ss-home *, .ref-secondary main *, .ref-secondary footer * { min-width:0; }
+.ss-home :is(img,video,svg,iframe),
+.ref-secondary main :is(img,video,iframe) { max-width:100%; }
+.ss-home :is(h1,h2,h3,p), .ref-secondary main :is(h1,h2,h3,p) { overflow-wrap:break-word; }
+.ss-home .ss-shell {
+  width:calc(100% - var(--fluid-gutter) * 2);
+  max-width:1800px;
+  margin-inline:auto;
+}
+.ref-secondary .site-container {
+  max-width:1800px;
+  padding-inline:var(--fluid-gutter);
+}
+.ref-secondary header.fixed > .site-container,
+.ref-secondary header.fixed > div.site-container { max-width:1800px; }
+.ss-home .ss-header { max-width:100%; }
+.ss-home .ss-hero.ss-hero-editorial {
+  width:100%;
+  min-height: min(760px, 86svh);
+  height:clamp(730px,90svh,1120px);
+  padding-inline:clamp(18px,5vw,110px);
+}
+.ss-home .ss-hero.ss-hero-editorial h1.ss-editorial-name {
+  font-size:clamp(56px,10vw,190px);
+  letter-spacing:-.087em;
+}
+.ss-home .ss-editorial-copy {
+  max-width:clamp(300px,27vw,490px);
+  left:clamp(26px,5vw,100px);
+}
+.ss-home .ss-editorial-copy h2 { font-size:clamp(29px,2.85vw,53px); }
+.ss-home .ss-editorial-copy>p:not(.ss-eyebrow) { max-width:440px; font-size:clamp(12px,1.05vw,16px); }
+.ss-home .ss-editorial-links { right:clamp(22px,4vw,90px); }
+.ss-home .ss-editorial-portrait { max-width:920px; }
+.ss-home .ss-section { padding-inline:clamp(0px,1.3vw,28px); padding-top:clamp(65px,7vw,125px); }
+.ss-home .ss-section-head { flex-wrap:wrap; }
+.ss-home .ss-section-head>div { min-width:0; }
+.ss-home .ss-section-head>p { max-width:440px; }
+.ss-home .ss-about { grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr); gap:clamp(25px,5vw,90px); }
+.ss-home .ss-about-bento, .ss-home .ss-expertise-grid, .ss-home .ss-gallery-grid { min-width:0; }
+.ss-home .ps-grid, .ps-portfolio-page .ps-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(16px,2vw,34px); }
+.ps-portfolio-page .ps-page-hero { padding-top:clamp(130px,11vw,210px); }
+.ps-portfolio-page .ps-page-section { padding-inline:0; }
+.ss-home .ss-presentation-feature { grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); }
+.ss-home .ss-contact, .ref-secondary .p5-contact { max-width:100%; }
+.ref-secondary .ref-certificates .site-container { max-width:1800px; }
+
+/* Mid-sized laptops, smaller desktop windows and landscape tablets. */
+@media(max-width:1199px) {
+  .ss-home .ss-hero.ss-hero-editorial { height:clamp(720px,93svh,920px); }
+  .ss-home .ss-hero.ss-hero-editorial h1.ss-editorial-name { font-size:clamp(57px,10.2vw,121px); }
+  .ss-home .ss-editorial-copy { left:4%; max-width:300px; }
+  .ss-home .ss-editorial-links { right:3%; }
+}
+@media(max-width:950px) {
+  .ss-home .ss-hero.ss-hero-editorial { height:790px; min-height:0; }
+  .ss-home .ss-about { grid-template-columns:minmax(0,1fr); }
+  .ss-home .ss-about-bento { width:100%; }
+  .ss-home .ss-presentation-feature { grid-template-columns:minmax(0,1fr); }
+  .ss-home .ss-editorial-name { margin-top:48px; }
+  .ss-home .ss-editorial-note-bottom { right:3%; }
+  .ps-portfolio-page .ps-page-hero-grid { grid-template-columns:minmax(0,1fr) 160px; }
+}
+/* Phones and portrait tablets: content flows vertically.
+   No fixed hero height, overlapping captions or hidden contact links. */
+@media(max-width:750px) {
+  :root { --fluid-gutter:clamp(12px,3.6vw,25px); }
+  .ss-home .ss-shell { width:calc(100% - 2 * var(--fluid-gutter)); }
+  .ss-home .ss-header {
+    width:100%;
+    top:0;
+    margin:12px 0 0;
+    padding:9px clamp(9px,2.5vw,15px);
+    min-height:64px;
+    gap:8px;
+    border-radius:16px;
+  }
+  .ss-home .ss-logo { gap:7px; }
+  .ss-home .ss-logo>span { font-size:clamp(13px,4vw,19px); }
+  .ss-home .ss-brand-mark { width:38px; height:38px; }
+  .ss-home .ss-header-cta { padding:10px 11px; min-height:42px; margin-left:auto; font-size:11px; }
+  .ss-home .ss-mobile-menu { width:44px; height:44px; flex:none; }
+  .ss-home .ss-hero.ss-hero-editorial {
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    width:100%;
+    height:auto;
+    min-height:0;
+    padding:110px clamp(16px,4.8vw,35px) 32px;
+    overflow:hidden;
+    border-radius:24px;
+  }
+  .ss-home .ss-editorial-kicker {
+    order:1;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:7px 12px;
+    width:100%;
+    font-size:clamp(8px,1.6vw,10px);
+    letter-spacing:.04em;
+  }
+  .ss-home .ss-editorial-kicker span { min-width:0; }
+  .ss-home .ss-editorial-kicker>span:first-child { max-width:none; }
+  .ss-home .ss-hero.ss-hero-editorial h1.ss-editorial-name {
+    order:2;
+    width:100%;
+    max-width:100%;
+    margin:25px 0 0;
+    font-size:clamp(34px,10.8vw,80px);
+    line-height:1.02;
+    letter-spacing:-.095em;
+    white-space:nowrap;
+  }
+  .ss-home .ss-editorial-orbit { top:170px; width:70vw; height:70vw; }
+  .ss-home .ss-editorial-portrait {
+    position:relative;
+    order:3;
+    left:auto;
+    bottom:auto;
+    transform:none;
+    flex:none;
+    width:100%;
+    height:clamp(245px,75vw,530px);
+    margin:0 auto;
+    filter:drop-shadow(0 15px 24px rgba(23,23,23,.11));
+  }
+  .ss-home .ss-editorial-portrait .ref-portrait {
+    position:relative;
+    height:100%;
+    width:100%;
+    bottom:auto;
+    left:auto;
+  }
+  .ss-home .ss-editorial-note-top,
+  .ss-home .ss-editorial-note-bottom { display:none; }
+  .ss-home .ss-editorial-copy {
+    position:relative;
+    order:4;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    width:100%;
+    max-width:590px;
+    margin:0 auto;
+    padding:0;
+    text-align:center;
+  }
+  .ss-home .ss-editorial-copy h2 { font-size:clamp(29px,6.6vw,43px); line-height:1.14; }
+  .ss-home .ss-editorial-copy>p:not(.ss-eyebrow) {
+    max-width:520px;
+    font-size:clamp(13px,2.9vw,16px);
+    line-height:1.75;
+    margin:12px auto 20px;
+  }
+  .ss-home .ss-editorial-copy .ss-actions { justify-content:center; flex-wrap:wrap; }
+  .ss-home .ss-editorial-links {
+    position:relative;
+    order:5;
+    right:auto;
+    bottom:auto;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:9px;
+    margin:25px auto 0;
+  }
+  .ss-home .ss-editorial-links a { min-height:42px; padding:9px 13px; }
+  .ss-home .ss-editorial-scroll { display:none; }
+  .ss-home .ss-trust-strip { flex-wrap:wrap; }
+  .ss-home .ss-section { padding-top:clamp(57px,10vw,83px); padding-inline:0; }
+  .ss-home .ss-section-head { gap:14px; margin-bottom:26px; }
+  .ss-home .ss-section-head h2,.ss-home .ss-about h2 { font-size:clamp(32px,7vw,50px); }
+  .ss-home .ps-grid, .ps-portfolio-page .ps-grid { grid-template-columns:minmax(0,1fr); }
+  .ss-home .ss-about-bento { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ss-home .ss-journey--phase3 .ss-journey-row { max-width:100%; }
+  .ss-home .ss-presentation-feature { grid-template-columns:minmax(0,1fr); gap:30px; }
+  .ss-home .ss-presentation-frame { width:min(100%,315px); }
+  .ps-portfolio-page .ps-page-hero-grid { grid-template-columns:minmax(0,1fr); }
+  .ref-secondary .ref-certificate-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ref-secondary .p5-contact .grid { min-width:0; }
+}
+@media(max-width:540px) {
+  .ss-home .ss-hero.ss-hero-editorial { padding-inline:16px; padding-top:110px; }
+  .ss-home .ss-header-cta { font-size:10px; gap:4px; }
+  .ss-home .ss-editorial-kicker>span:nth-child(2) { font-size:8px; }
+  .ss-home .ss-editorial-portrait { height:clamp(250px,82vw,435px); }
+  .ss-home .ss-about-bento { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+  .ss-home .ss-presentation-feature { padding:23px 16px; }
+  .ref-secondary .ref-certificate-grid { grid-template-columns:minmax(0,1fr); }
+  .ref-secondary .site-container { padding-inline:var(--fluid-gutter); }
+}
+@media(max-width:360px) {
+  :root { --fluid-gutter:10px; }
+  .ss-home .ss-logo>span { font-size:12px; }
+  .ss-home .ss-header-cta { padding:9px; }
+  .ss-home .ss-hero.ss-hero-editorial { padding-inline:12px; }
+  .ss-home .ss-editorial-kicker { font-size:7px; }
+  .ss-home .ss-hero.ss-hero-editorial h1.ss-editorial-name { font-size:10.3vw; }
+  .ss-home .ss-about-bento { grid-template-columns:minmax(0,1fr); }
+}
+@media(min-width:1600px) {
+  .ss-home .ss-shell { max-width:1800px; }
+  .ss-home .ss-hero.ss-hero-editorial { height:clamp(850px,78svh,1160px); }
+  .ss-home .ss-editorial-name { margin-top:clamp(42px,3vw,80px); }
+  .ss-home .ss-editorial-copy { bottom:9%; }
+  .ss-home .ss-presentation-feature { gap:clamp(45px,6vw,110px); }
+  .ps-portfolio-page .ps-page-section .site-container { max-width:1800px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .ss-home .ss-editorial-portrait, .ss-home .ss-editorial-copy { animation:none!important; }
+  .ss-home .ss-editorial-portrait { opacity:1!important; }
+}
