@@ -26,6 +26,12 @@ const Navbar = () => {
 
   useEffect(() => setOpen(false), [location.pathname, location.hash]);
   useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
@@ -61,10 +67,10 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div id="public-mobile-navigation" className="fixed inset-0 top-0 -z-10 bg-navy px-6 pb-10 pt-28 text-white lg:hidden">
-          <nav className="mx-auto flex h-full max-w-lg flex-col justify-center" aria-label="Mobile navigation">
+        <div id="public-mobile-navigation" className="absolute inset-x-0 top-full z-10 max-h-[calc(100dvh-84px)] overflow-y-auto bg-[#171717] px-6 py-8 text-white shadow-2xl lg:hidden">
+          <nav className="mx-auto flex max-w-lg flex-col" aria-label="Mobile navigation">
             {navigation.map((item, index) => (
-              <Link key={item.label} to={item.to} className="flex items-center justify-between border-b border-white/10 py-5 font-display text-3xl font-extrabold tracking-[-.04em]">
+              <Link key={item.label} to={item.to} className="flex min-h-14 items-center justify-between border-b border-white/10 py-3 font-display text-2xl font-extrabold tracking-[-.04em]">
                 <span><span className="mr-4 text-xs text-yellow-300">0{index + 1}</span>{item.label}</span><ArrowUpRight className="text-white/30" />
               </Link>
             ))}
