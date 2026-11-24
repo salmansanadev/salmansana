@@ -11,11 +11,21 @@ interface Certificate {
   issuer: string | null;
   date_issued: string | null;
   image_url: string;
+  image_alt?: string;
   pdf_url?: string;
   description?: string;
 }
 
 const localCertificateExtras: Certificate[] = [
+  {
+    id: "kech-academic-gala-2026-business-idea",
+    title: "Second Place — Business Idea Competition",
+    issuer: "University of Turbat",
+    date_issued: null,
+    image_url: "/certificates/kech-academic-gala-2026-business-idea.webp",
+    image_alt: "Salman Sana receiving his Certificate of Achievement from Major General Zafar Iqbal and Vice Chancellor Prof. Dr. Gul Hasan.",
+    description: "Placed second in the Business Idea Competition at Kech Academic Gala 2026. Major General Zafar Iqbal and Vice Chancellor Prof. Dr. Gul Hasan presented the Certificate of Achievement.",
+  },
   {
     id: "uot-beli-ai-education-2026",
     title: "Certificate of Appreciation — AI Education Session",
@@ -127,7 +137,7 @@ const Certificates = () => {
   const [dateIssued, setDateIssued] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
-  const [viewImage, setViewImage] = useState<string | null>(null);
+  const [viewCertificate, setViewCertificate] = useState<Certificate | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -293,8 +303,8 @@ const Certificates = () => {
             <div key={cert.id}
               className="ref-certificate-card group"
               >
-              <button type="button" className="ref-certificate-preview" aria-label={`View ${cert.title}`} onClick={() => setViewImage(cert.image_url)}>
-                <img src={cert.image_url} alt={cert.title} className="ref-certificate-image" loading="lazy" />
+              <button type="button" className="ref-certificate-preview" aria-label={`View ${cert.title}`} onClick={() => setViewCertificate(cert)}>
+                <img src={cert.image_url} alt={cert.image_alt ?? cert.title} className="ref-certificate-image" loading="lazy" />
                 <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors flex items-center justify-center">
                   <Award size={32} className="text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -335,10 +345,10 @@ const Certificates = () => {
         </div>
       )}
 
-      <Dialog open={!!viewImage} onOpenChange={open => { if (!open) setViewImage(null); }}>
+      <Dialog open={!!viewCertificate} onOpenChange={open => { if (!open) setViewCertificate(null); }}>
         <DialogContent className="ref-certificate-dialog">
-          <DialogTitle className="sr-only">Certificate preview</DialogTitle>
-          {viewImage && <img src={viewImage} alt="Full certificate preview" />}
+          <DialogTitle className="sr-only">{viewCertificate?.title ?? "Certificate preview"}</DialogTitle>
+          {viewCertificate && <img src={viewCertificate.image_url} alt={viewCertificate.image_alt ?? viewCertificate.title} />}
         </DialogContent>
       </Dialog>
 
