@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -8,7 +7,6 @@ import { articles } from "@/lib/portfolio-data";
 
 const Blog = () => (
   <>
-    <Helmet><title>Insights | Salman Sana</title><meta name="description" content="Clear notes on finance, marketing, entrepreneurship and the lessons Salman Sana is learning through business school and practical projects." /><link rel="canonical" href="https://www.salmansana.me/blog" /></Helmet>
     <Navbar />
     <main className="p5-blog">
       <section className="page-hero noise"><div className="grid-lines absolute inset-0 opacity-10" /><div className="site-container relative"><p className="page-kicker">Notes & insights</p><h1 className="page-title">Learning in public,<br /><span className="text-yellow-300">one clear idea at a time.</span></h1><p className="page-lead">Accessible thinking about finance, marketing and entrepreneurship—written to make useful concepts easier to understand.</p></div></section>

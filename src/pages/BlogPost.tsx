@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { ArrowLeft, Clock } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -12,7 +11,6 @@ const BlogPost = () => {
   if (!article) return <Navigate to="/blog" replace />;
   return (
     <>
-      <Helmet><title>{article.title} | Salman Sana</title><meta name="description" content={article.excerpt} /><link rel="canonical" href={`https://www.salmansana.me/blog/${article.slug}`} /></Helmet>
       <Navbar />
       <main className="p5-blog-post">
         <section className="page-hero noise"><div className="grid-lines absolute inset-0 opacity-10" /><div className="site-container relative"><Link to="/blog" className="mb-10 inline-flex items-center gap-2 text-sm font-bold text-white/50 hover:text-white"><ArrowLeft size={16} />Back to insights</Link><p className="page-kicker">{article.category}</p><h1 className="max-w-5xl font-display text-[clamp(2.7rem,6vw,5.7rem)] font-extrabold leading-[.96] tracking-[-.06em]">{article.title}</h1><div className="mt-8 flex flex-wrap items-center gap-5 text-xs font-semibold text-white/45"><span>{article.date}</span><span className="flex items-center gap-2"><Clock size={14} />{article.readTime}</span><span>By Salman Sana</span></div></div></section>

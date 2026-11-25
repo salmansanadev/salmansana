@@ -1,11 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /admin
 Disallow: /.git
 Disallow: /node_modules
 Disallow: /dist
 
 Sitemap: https://www.salmansana.me/sitemap.xml
-
-# Crawl delay to be respectful
-Crawl-delay: 1

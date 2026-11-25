@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { ArrowUpRight, BadgeCheck, Building2, Target, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -47,7 +46,6 @@ const values = [
 
 const AboutPage = () => (
   <>
-    <Helmet><title>About Salman Sana | Finance, Marketing & Youth Leadership</title><meta name="description" content="Meet Salman Sana, Founder &amp; CEO of Learnoa, BBA student at the University of Turbat, and Assistant Director at the BELI Centre for AI and Digital Skills." /><link rel="canonical" href="https://www.salmansana.me/about" /></Helmet>
     <Navbar />
     <main className="about-phase3">
       <section className="page-hero noise"><div className="grid-lines absolute inset-0 opacity-10" /><div className="site-container relative"><p className="page-kicker">About Salman</p><h1 className="page-title">Curious by nature.<br /><span className="text-yellow-300">Grounded in purpose.</span></h1><p className="page-lead">I&apos;m learning how finance, marketing and technology can work together to solve practical problems and create opportunities in Balochistan and beyond.</p></div></section>
