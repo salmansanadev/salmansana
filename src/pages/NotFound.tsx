@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Home, SearchX } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import BrandMark from "@/components/BrandMark";
 
 /** Public route fallback. Keep it independent of authenticated pages. */
@@ -13,10 +12,6 @@ export default function NotFound() {
 
   return (
     <main className="min-h-screen bg-white px-5 py-14 text-[#171717]">
-      <Helmet>
-        <title>Page Not Found | Salman Sana</title>
-        <meta name="robots" content="noindex,follow" />
-      </Helmet>
       <div className="mx-auto flex min-h-[80dvh] w-full max-w-2xl flex-col items-center justify-center text-center">
         <Link to="/" className="mb-12 inline-flex items-center gap-3 rounded-xl p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F97316]" aria-label="Salman Sana home">
           <BrandMark className="h-12 w-12" />

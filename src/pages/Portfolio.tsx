@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,11 +9,6 @@ import "./portfolio-phase2.css";
 export default function Portfolio() {
   return (
     <>
-      <Helmet>
-        <title>Selected Work — Web Development & Ventures | Salman Sana</title>
-        <meta name="description" content="Explore Salman Sana's web development work, digital products, and founder-led ventures including JASA Solutions, Roshin, Inspiration Lab, Karbaar, and Learnoa." />
-        <link rel="canonical" href="https://www.salmansana.me/portfolio" />
-      </Helmet>
       <Navbar />
       <main className="ps-portfolio-page">
         <section className="ps-page-hero" aria-labelledby="ps-page-title">

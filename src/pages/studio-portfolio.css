@@ -158,8 +158,8 @@
 .ss-home .ss-contact-bottom a{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800}
 .ss-home .ss-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:45px 0 35px}
 .ss-home .ss-footer p{font-size:11px;color:#758478}
-.ss-home .ss-footer>div{display:flex;gap:24px;flex-wrap:wrap}
-.ss-home .ss-footer>div a{font-size:11px;font-weight:800;color:#39302C}
+.ss-home .ss-footer>nav{display:flex;gap:24px;flex-wrap:wrap}
+.ss-home .ss-footer>nav a{font-size:11px;font-weight:800;color:#39302C}
 @media(max-width:1100px){
  .ss-home .ss-nav{gap:12px;font-size:12px}
  .ss-home .ss-hero{padding-inline:40px}
@@ -247,7 +247,7 @@
  .ss-home .ss-contact-bottom{flex-wrap:wrap;gap:15px}
  .ss-home .ss-contact-bottom span{width:100%;flex:none}
  .ss-home .ss-footer{padding:30px 10px;justify-content:center;text-align:center}
- .ss-home .ss-footer>div{justify-content:center}
+ .ss-home .ss-footer>nav{justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.ss-home *{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){.ss-home .ss-header,.ss-home .ss-status,.ss-home .ss-float-note,.ss-home .ss-trust-strip{background:#fff}}
